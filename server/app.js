@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var registerRouter = require("./routes/register");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -26,7 +27,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
+app.use("/register", registerRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
