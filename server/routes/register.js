@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
+const AuthenticationController = require("../controllers/AuthenticationController");
+const AuthenticationControllerPolicy = require("../controllers/AuthenticationControllerPolicy");
 
 router.post("/", (req, res) => {
-  res.send({
-    message: `${req.body.email}  Registered`,
-  });
-  console.log(req.body.email);
+  AuthenticationControllerPolicy.register(req, res),
+    AuthenticationController.register(req, res);
 });
 
 module.exports = router;

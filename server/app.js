@@ -10,6 +10,9 @@ var registerRouter = require("./routes/register");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { sequelize } = require("./models");
+const db = require("./models");
+
 var app = express();
 
 // view engine setup
@@ -28,6 +31,10 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/register", registerRouter);
+
+//setup db connection
+sequelize.sync().then(() => {});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
