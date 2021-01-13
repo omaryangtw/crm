@@ -10,4 +10,7 @@ module.exports = {
       logQueryParameters: true,
     },
   },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || "secret",
+  },
 };

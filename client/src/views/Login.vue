@@ -5,13 +5,13 @@
     >
       <div class="mb-4">
         <label
-          class="block text-grey-darker text-sm font-bold mb-2"
+          class="block text-grey-700 text-sm font-bold mb-2"
           for="username"
         >
           E-mail
         </label>
         <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-700"
           id="username"
           type="email"
           placeholder="E-mail"
@@ -20,36 +20,34 @@
       </div>
       <div class="mb-6">
         <label
-          class="block text-grey-darker text-sm font-bold mb-2"
+          class="block text-grey-700 text-sm font-bold mb-2"
           for="password"
         >
           Password
         </label>
         <input
-          class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-grey-darker mb-3"
+          class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-700 mb-3"
           id="password"
           type="password"
           v-model="password"
           placeholder="******************"
         />
-        <p v-if="password == ''" class="text-red-500 text-xs italic">
-          Please choose a password.
-        </p>
+        <p class="text-red text-xs italic">Please choose a password.</p>
       </div>
       <div class="flex items-center justify-between">
-        <a
-          class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
-          href="#"
-        >
-          Learn More
-        </a>
+        <div></div>
         <button
-          @click="register"
+          @click="login"
           class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
           type="button"
         >
-          Register
+          Sign In
         </button>
+        <a
+          class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-700"
+          href="#"
+        >
+        </a>
       </div>
     </div>
   </div>
@@ -59,7 +57,7 @@
 import AuthenticationService from "../services/AuthenticationService/AuthenticationServices";
 import { mapActions } from "vuex";
 export default {
-  name: "Register",
+  name: "Login",
   data() {
     return {
       email: "",
@@ -68,9 +66,9 @@ export default {
   },
   methods: {
     ...mapActions(["setToken", "setUser"]),
-    async register() {
+    async login() {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password,
         });
