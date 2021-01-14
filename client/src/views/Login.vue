@@ -74,6 +74,7 @@ export default {
         });
         this.setToken(response.data.token);
         this.setUser(response.data.user);
+        this.$router.push("/");
       } catch (error) {
         this.error = error.response.data.error;
       }
