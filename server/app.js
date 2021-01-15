@@ -33,6 +33,10 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+
+const clientsRouter = require("./routes/clients");
+app.use("/clients", clientsRouter);
+
 //setup db connection
 sequelize.sync().then(() => {});
 
