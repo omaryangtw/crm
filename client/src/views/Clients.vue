@@ -5,9 +5,20 @@
       <p>name-list</p>
     </panel>
     <panel title="Client">
-      <p>name</p>
-      <p>sex</p>
-      <p>birthday</p>
+      <div v-for="client in clients" :key="client.id">
+        {{ client.name }}
+        {{ client.sex }}
+        <button
+          @click="
+            this.$router.push({
+              name: 'client',
+              params: { clientId: client.id },
+            })
+          "
+        >
+          view
+        </button>
+      </div>
     </panel>
   </div>
 </template>
@@ -23,9 +34,14 @@ export default {
       clients: null,
     };
   },
+  methods: {
+    redirect(route) {
+      this.$router.push(route);
+    },
+  },
   async mounted() {
     // Request for clients
-    this.clients = await ClientsServices.index();
+    this.clients = (await ClientsServices.index()).data;
   },
 };
 </script>

@@ -6,6 +6,12 @@
         <button @click="redirect('/about')">About</button>
       </div>
       <div>
+        <button @click="redirect('/clients')">
+          Clients
+        </button>
+        <button @click="redirect('/clients/add')">
+          Create Client
+        </button>
         <button
           v-if="this.$store.state.isUserLoggedIn === false"
           @click="redirect('/register')"
