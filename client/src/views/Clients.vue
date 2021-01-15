@@ -13,10 +13,20 @@
 </template>
 
 <script>
+import ClientsServices from "../services/ClientsService.js";
 import Panel from "../components/Panel.vue";
 export default {
-  name: "client",
+  name: "clients",
   components: { Panel },
+  data() {
+    return {
+      clients: null,
+    };
+  },
+  async mounted() {
+    // Request for clients
+    this.clients = await ClientsServices.index();
+  },
 };
 </script>
 
