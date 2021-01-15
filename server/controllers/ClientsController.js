@@ -22,4 +22,16 @@ module.exports = {
       });
     }
   },
+  async display(req, res) {
+    try {
+      const client = await Client.findOne({
+        where: { id: req.params.clientId },
+      });
+      res.send(client);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
+      });
+    }
+  },
 };

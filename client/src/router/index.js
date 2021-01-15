@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import Register from "../views/Register.vue";
 import Login from "../views/Login.vue";
 import Clients from "../views/Clients";
+import CreateClient from "../views/CreateClient";
+import ViewClient from "../views/ViewClient";
 const routes = [
   {
     path: "/",
@@ -23,6 +25,16 @@ const routes = [
     path: "/clients",
     name: "Clients",
     component: Clients,
+  },
+  {
+    path: "/clients/:clientId",
+    name: "client",
+    component: ViewClient,
+  },
+  {
+    path: "/clients/add",
+    name: "CreateClient",
+    component: CreateClient,
   },
   {
     path: "/about",
