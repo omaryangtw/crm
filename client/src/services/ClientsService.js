@@ -7,7 +7,10 @@ export default {
   create(client) {
     return api().post("clients", client);
   },
-  display(id) {
+  put(client) {
+    return api().put(`clients/${client.id}`, client);
+  },
+  get(id) {
     return api().get(`clients/${id}`);
   },
 };

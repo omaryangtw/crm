@@ -13,12 +13,25 @@ module.exports = {
   },
   async post(req, res) {
     try {
-      console.log("controller");
       const client = await Client.create(req.body);
       res.send(client);
     } catch (err) {
       res.status(500).send({
         error: "an error occured trying to create a client",
+      });
+    }
+  },
+  async put(req, res) {
+    try {
+      const client = await Client.update(req.body, {
+        where: {
+          id: req.params.clientId,
+        },
+      });
+      res.send(req.body);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to update a client",
       });
     }
   },

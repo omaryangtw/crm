@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Clients from "../views/Clients";
 import CreateClient from "../views/CreateClient";
 import ViewClient from "../views/ViewClient";
+import EditClient from "../views/EditClient";
 const routes = [
   {
     path: "/",
@@ -32,6 +33,11 @@ const routes = [
     component: ViewClient,
   },
   {
+    path: "/clients/:clientId/edit",
+    name: "Editclient",
+    component: EditClient,
+  },
+  {
     path: "/clients/add",
     name: "CreateClient",
     component: CreateClient,
@@ -50,6 +56,7 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  mode: "history",
 });
 
 export default router;

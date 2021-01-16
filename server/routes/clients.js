@@ -4,8 +4,10 @@ const ClientsController = require("../controllers/ClientsController");
 
 router.get("/", ClientsController.index);
 router.post("/", (req, res) => {
-  console.log("router");
   ClientsController.post(req, res);
+});
+router.put("/:clientId", (req, res) => {
+  ClientsController.put(req, res);
 });
 router.get("/:clientId", (req, res) => {
   ClientsController.display(req, res);
