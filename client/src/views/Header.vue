@@ -2,28 +2,23 @@
   <div>
     <div class="flex justify-between">
       <div>
-        <button @click="redirect('/')">Home</button>
-        <button @click="redirect('/about')">About</button>
+        <router-link :to="{ name: 'Home' }">Home</router-link>
+
+        <router-link :to="{ name: 'About' }">About</router-link>
       </div>
       <div>
-        <button @click="redirect('/clients')">
-          Clients
-        </button>
-        <button @click="redirect('/clients/add')">
-          Create Client
-        </button>
-        <button
+        <router-link :to="{ name: 'Clients' }">Clients</router-link>
+        <router-link :to="{ name: 'CreateClient' }">CreateClient</router-link>
+        <router-link
           v-if="this.$store.state.isUserLoggedIn === false"
-          @click="redirect('/register')"
+          :to="{ name: 'Register' }"
+          >Register</router-link
         >
-          Register
-        </button>
-        <button
-          @click="redirect('/login')"
+        <router-link
           v-if="this.$store.state.isUserLoggedIn === false"
+          :to="{ name: 'Login' }"
+          >Login</router-link
         >
-          Login
-        </button>
         <button
           @click="logout"
           v-if="this.$store.state.isUserLoggedIn === true"
@@ -45,9 +40,6 @@ export default {
       this.setToken(null);
       this.setUser(null);
       this.$router.push("/");
-    },
-    redirect(route) {
-      this.$router.push(route);
     },
   },
 };

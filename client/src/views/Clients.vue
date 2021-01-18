@@ -1,23 +1,19 @@
 <template>
   <div class="flex">
-    <panel title="Sidebar">
-      <p>search</p>
-      <p>name-list</p>
-    </panel>
+    <Search />
+
     <panel title="Client">
-      <div v-for="client in clients" :key="client.id">
-        {{ client.name }}
-        {{ client.sex }}
-        <button
-          @click="
-            this.$router.push({
-              name: 'client',
-              params: { clientId: client.id },
-            })
-          "
+      <div>
+        <div
+          v-for="client in clients"
+          :key="client.id"
+          class="flex justify-between"
         >
-          view
-        </button>
+          <router-link
+            :to="{ name: 'client', params: { clientId: client.id } }"
+            >{{ client.name }}</router-link
+          >
+        </div>
       </div>
     </panel>
   </div>
@@ -26,22 +22,23 @@
 <script>
 import ClientsServices from "../services/ClientsService.js";
 import Panel from "../components/Panel.vue";
+import Search from "./Search";
 export default {
   name: "clients",
-  components: { Panel },
+  components: { Panel, Search },
   data() {
     return {
       clients: null,
+      search: "",
     };
   },
-  methods: {
-    redirect(route) {
-      this.$router.push(route);
+  watch: {
+    "$route.query.search": {
+      immediate: true,
+      async handler(value) {
+        this.clients = (await ClientsServices.index(value)).data;
+      },
     },
-  },
-  async mounted() {
-    // Request for clients
-    this.clients = (await ClientsServices.index()).data;
   },
 };
 </script>
