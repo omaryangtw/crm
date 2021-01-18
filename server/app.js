@@ -37,8 +37,11 @@ app.use("/login", loginRouter);
 const clientsRouter = require("./routes/clients");
 app.use("/clients", clientsRouter);
 
+const CaseRouter = require("./routes/case");
+app.use("/case", CaseRouter);
+
 //setup db connection
-sequelize.sync().then(() => {});
+sequelize.sync({ force: true }).then(() => {});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
