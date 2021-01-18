@@ -53,5 +53,9 @@ module.exports = (sequelize, DataTypes) => {
     note: DataTypes.TEXT,
   });
 
+  Client.associate = (models) => {
+    Client.hasMany(models.Case, { onDelete: "cascade" });
+  };
+
   return Client;
 };
