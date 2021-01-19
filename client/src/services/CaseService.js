@@ -8,8 +8,8 @@ export default {
       },
     });
   },
-  create(case__) {
-    return api().post("case", case__);
+  create(case_) {
+    return api().post("case", case_);
   },
   put(case__) {
     return api().put(`case/${case__.id}`, case__);

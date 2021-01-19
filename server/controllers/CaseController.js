@@ -36,9 +36,10 @@ module.exports = {
   async post(req, res) {
     try {
       console.log(req.body);
-      const case__ = await Case.create(req.body);
 
-      await case__.createClient({ name: "client___" });
+      const case__ = await Case.create(req.body.case_);
+      const client = await Client.findOne({ where: { id: req.body.clientId } });
+      case__.setClient(client);
       res.send(case__);
     } catch (err) {
       res.status(500).send({

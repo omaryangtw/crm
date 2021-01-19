@@ -53,8 +53,21 @@ module.exports = (sequelize, DataTypes) => {
     note: DataTypes.TEXT,
   });
 
+  const ClinetClients = sequelize.define(
+    "ClientClients",
+    {
+      relationship: DataTypes.TEXT,
+    },
+    { timestamps: false }
+  );
+
   Client.associate = (models) => {
     Client.hasMany(models.Case, { onDelete: "cascade" });
+
+    Client.belongsToMany(models.Client, {
+      as: "Family",
+      through: "ClientClients",
+    });
   };
 
   return Client;

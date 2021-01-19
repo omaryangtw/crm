@@ -1,4 +1,4 @@
-const { Client, Case } = require("../models");
+const { Client, Case, Family } = require("../models");
 const { or, like } = require("sequelize").Op;
 module.exports = {
   async index(req, res) {
@@ -15,14 +15,12 @@ module.exports = {
               },
             })),
           },
-          include: [
-            {
-              model: Case,
-            },
-          ],
         });
       } else {
-        clients = await Client.findAll({ limit: 10 });
+        clients = await Client.findAll({
+          limit: 10,
+          include: { all: true, nested: true },
+        });
       }
 
       res.send(clients);
@@ -35,9 +33,16 @@ module.exports = {
   async post(req, res) {
     try {
       const client = await Client.create(req.body);
-      const case__ = await Case.create({ name: "bar" });
-      await client.addCase(case__);
-      console.log(case__);
+      await Client.create({
+        name: "dummyFamily",
+      });
+
+      Client.findOne({ where: { name: req.body.name } }).then((u1) => {
+        Client.findOne({ where: { name: "dummyFamily" } }).then((u2) => {
+          u2.addFamily(u1, { through: { relationship: "aunt" } });
+        });
+      });
+
       res.send(client);
     } catch (err) {
       res.status(500).send({
@@ -63,6 +68,11 @@ module.exports = {
     try {
       const client = await Client.findOne({
         where: { id: req.params.clientId },
+        include: [
+          {
+            model: Case,
+          },
+        ],
       });
       res.send(client);
     } catch (err) {
