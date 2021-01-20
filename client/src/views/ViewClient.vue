@@ -36,8 +36,8 @@
       </div>
     </panel>
 
-    <ViewFamily v-if="isReloadAlive" :client="client" />
-    <CreateFamily v-if="isReloadAlive" :target="client" />
+    <ViewFamily :client="client" />
+    <CreateFamily :target="client" />
   </div>
 </template>
 
@@ -53,29 +53,17 @@ export default {
     CreateFamily,
     ViewFamily,
   },
-  provide() {
-    return {
-      reload: this.reload,
-    };
-  },
   data() {
     return {
       clientId: null,
       client: {
         id: "",
       },
-      isReloadAlive: true,
     };
   },
   methods: {
     edit() {
       this.$router.push(`/clients/${this.clientId}/edit`);
-    },
-    reload() {
-      this.isReloadAlive = false;
-      this.$nextTick(function() {
-        this.isReloadAlive = true;
-      });
     },
   },
   async mounted() {
