@@ -35,16 +35,28 @@
         {{ client.note }}
       </div>
     </panel>
+
+    <ViewFamily v-if="isReloadAlive" :client="client" />
+    <CreateFamily v-if="isReloadAlive" :target="client" />
   </div>
 </template>
 
 <script>
 import ClientsService from "../services/ClientsService";
 import Panel from "../components/Panel";
+import CreateFamily from "./CreateFamily";
+import ViewFamily from "./ViewFamily";
 export default {
   name: "ViewClient",
   components: {
     Panel,
+    CreateFamily,
+    ViewFamily,
+  },
+  provide() {
+    return {
+      reload: this.reload,
+    };
   },
   data() {
     return {
@@ -52,11 +64,18 @@ export default {
       client: {
         id: "",
       },
+      isReloadAlive: true,
     };
   },
   methods: {
     edit() {
       this.$router.push(`/clients/${this.clientId}/edit`);
+    },
+    reload() {
+      this.isReloadAlive = false;
+      this.$nextTick(function() {
+        this.isReloadAlive = true;
+      });
     },
   },
   async mounted() {

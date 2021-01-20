@@ -15,6 +15,7 @@ module.exports = {
               },
             })),
           },
+          include: { all: true, nested: true },
         });
       } else {
         clients = await Client.findAll({
@@ -33,16 +34,6 @@ module.exports = {
   async post(req, res) {
     try {
       const client = await Client.create(req.body);
-      await Client.create({
-        name: "dummyFamily",
-      });
-
-      Client.findOne({ where: { name: req.body.name } }).then((u1) => {
-        Client.findOne({ where: { name: "dummyFamily" } }).then((u2) => {
-          u2.addFamily(u1, { through: { relationship: "aunt" } });
-        });
-      });
-
       res.send(client);
     } catch (err) {
       res.status(500).send({
@@ -68,11 +59,7 @@ module.exports = {
     try {
       const client = await Client.findOne({
         where: { id: req.params.clientId },
-        include: [
-          {
-            model: Case,
-          },
-        ],
+        include: { all: true, nested: true },
       });
       res.send(client);
     } catch (err) {
