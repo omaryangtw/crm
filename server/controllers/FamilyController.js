@@ -225,6 +225,7 @@ module.exports = {
       Client.findOne({ where: { id: req.params.targetId } }).then((u1) => {
         Client.findOne({ where: { id: req.params.sourceId } }).then((u2) => {
           u2.removeFamily(u1);
+          u1.removeFamily(u2);
         });
       });
       res.send(req.params);
