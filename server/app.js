@@ -43,6 +43,9 @@ app.use("/case", caseRouter);
 const familyRouter = require("./routes/family");
 app.use("/family", familyRouter);
 
+const contactRouter = require("./routes/contact");
+app.use("/contact", contactRouter);
+
 //setup db connection
 sequelize.sync().then(() => {});
 

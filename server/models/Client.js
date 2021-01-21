@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Client.associate = (models) => {
     Client.hasMany(models.Case, { onDelete: "cascade" });
-
+    Client.hasMany(models.Contact, { onDelete: "cascade" });
     Client.belongsToMany(models.Client, {
       as: "Family",
       through: "ClientClients",

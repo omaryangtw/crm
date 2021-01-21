@@ -38,6 +38,8 @@
 
     <ViewFamily :client="client" />
     <CreateFamily :target="client" />
+    <ViewContact :client="client" />
+    <CreateContact :client="client" />
   </div>
 </template>
 
@@ -46,12 +48,16 @@ import ClientsService from "../services/ClientsService";
 import Panel from "../components/Panel";
 import CreateFamily from "./CreateFamily";
 import ViewFamily from "./ViewFamily";
+import CreateContact from "./CreateContact";
+import ViewContact from "./ViewContact.vue";
 export default {
   name: "ViewClient",
   components: {
     Panel,
     CreateFamily,
     ViewFamily,
+    CreateContact,
+    ViewContact,
   },
   data() {
     return {
