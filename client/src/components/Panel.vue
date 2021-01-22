@@ -1,9 +1,9 @@
 <template>
-  <div class="border-black border text-xl mx-4 my-4">
-    <div class="text-white font-semibold bg-green-500">
+  <div class="text-xl m-auto bg-gray-200 pl-8 pr-8 pt-3">
+    <div class="text-3xl font-semibold leading-6 text-gray-900">
       {{ title }}
     </div>
-    <div class="px-4">
+    <div class="px-4 mt-4">
       <slot> </slot>
     </div>
   </div>
