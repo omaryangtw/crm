@@ -312,6 +312,7 @@
                       >族別</label
                     >
                     <select
+                      disabled
                       id="group"
                       name="group"
                       autocomplete="group"
@@ -342,6 +343,7 @@
                       >平原/山原</label
                     >
                     <select
+                      disabled
                       id="plainMountain"
                       name="plainMountain"
                       autocomplete="plainMountain"
@@ -695,6 +697,7 @@
                       >註記</label
                     >
                     <textarea
+                      disabled
                       type="text"
                       name="note"
                       id="note"
