@@ -10,7 +10,7 @@ import Cases from "../views/Case/Cases";
 import CreateCase from "../views/Case/CreateCase";
 import ViewCase from "../views/Case/ViewCase";
 import EditCase from "../views/Case/EditCase";
-import Search from "../views/Search";
+import store from "../store";
 const routes = [
   {
     path: "/",
@@ -31,46 +31,97 @@ const routes = [
     path: "/clients",
     name: "Clients",
     component: Clients,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/clients/:clientId",
     name: "client",
     component: ViewClient,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/clients/:clientId/edit",
     name: "Editclient",
     component: EditClient,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/clients/add",
     name: "CreateClient",
     component: CreateClient,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/case",
     name: "Cases",
     component: Cases,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/case/:caseId",
     name: "ViewCase",
     component: ViewCase,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/case/:caseId/edit",
     name: "EditCase",
     component: EditCase,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/case/add",
     name: "CreateCase",
     component: CreateCase,
-  },
-  {
-    path: "/search",
-    name: "Search",
-    component: Search,
+    beforeEnter(to, from, next) {
+      if (store.state.isUserLoggedIn) {
+        next();
+      } else {
+        next({ name: "Login" });
+      }
+    },
   },
   {
     path: "/about",
