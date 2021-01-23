@@ -1,27 +1,15 @@
 <template>
   <div class="flex">
-    <panel title="Search">
+    <panel title="搜尋">
+      <p class="text-gray-500">姓名、電話、地址...</p>
       <input
+        class="mt-4"
         type="text"
         name="search"
         id="search"
         v-model="search"
-        placeholder="search..."
+        placeholder="搜尋"
       />
-    </panel>
-    <panel title="Client">
-      <div>
-        <div
-          v-for="client in clients"
-          :key="client.id"
-          class="flex justify-between"
-        >
-          <router-link
-            :to="{ name: 'client', params: { clientId: client.id } }"
-            >{{ client.name }}</router-link
-          >
-        </div>
-      </div>
     </panel>
   </div>
 </template>

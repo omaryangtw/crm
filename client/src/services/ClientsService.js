@@ -1,8 +1,12 @@
 import api from "./api.js";
 
 export default {
-  index() {
-    return api().get("clients");
+  index(search) {
+    return api().get("clients", {
+      params: {
+        search: search,
+      },
+    });
   },
   create(client) {
     return api().post("clients", client);

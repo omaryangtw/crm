@@ -5,11 +5,11 @@ module.exports = {
     try {
       let clients = null;
       const search = req.query.search;
-
+      console.log(req.query);
       if (search) {
         clients = await Client.findAll({
           where: {
-            [or]: ["name", "sex"].map((key) => ({
+            [or]: ["name", "mobile", "mobileAlt"].map((key) => ({
               [key]: {
                 [like]: `%${search}%`,
               },

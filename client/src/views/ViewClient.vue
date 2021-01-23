@@ -1,6 +1,17 @@
 <template>
   <div class="bg-gray-200">
+    <SlideOvers
+      :clientId="clientId"
+      :slideOverSwitch="slideOverSwitch"
+      @closePanel="closePanel"
+    />
     <panel>
+      <button
+        @click="slideOverSwitch = true"
+        class="absolute right-8 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        案件紀錄
+      </button>
       <div class="m-auto sm:mt-0 container">
         <div class="md:grid md:grid-cols-3 md:gap-6">
           <div class="md:col-span-1">
@@ -51,7 +62,10 @@
                         重度
                       </div>
                     </div>
-                    <div class="col-span-6 sm:col-start-6">
+                    <div
+                      class="col-span-6 sm:col-start-6"
+                      v-if="client.incomeStatus"
+                    >
                       <label
                         for="incomeStatus"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -737,6 +751,7 @@ import CreateFamily from "./CreateFamily";
 import ViewFamily from "./ViewFamily";
 import CreateContact from "./CreateContact";
 import ViewContact from "./ViewContact.vue";
+import SlideOvers from "../components/SlideOvers.vue";
 export default {
   name: "ViewClient",
   components: {
@@ -745,6 +760,7 @@ export default {
     ViewFamily,
     CreateContact,
     ViewContact,
+    SlideOvers,
   },
   data() {
     return {
@@ -752,11 +768,15 @@ export default {
       client: {
         id: "",
       },
+      slideOverSwitch: false,
     };
   },
   methods: {
     edit() {
       this.$router.push(`/clients/${this.clientId}/edit`);
+    },
+    closePanel() {
+      this.slideOverSwitch = false;
     },
   },
   async mounted() {
