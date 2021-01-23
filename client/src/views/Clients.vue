@@ -160,6 +160,9 @@ import Search from "./Search";
 export default {
   name: "clients",
   components: { Panel, Search },
+  meta: {
+    needLogin: true,
+  },
   data() {
     return {
       clients: null,
