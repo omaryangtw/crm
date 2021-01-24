@@ -1,22 +1,15 @@
 <template>
   <div>
     <panel>
-      <div class="container m-auto min-h-screen">
+      <div class="container m-auto">
         <div class="">
           <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-              <div class="px-4 sm:px-0 text-right">
-                <h3
-                  class="text-2xl pt-4 px-8 font-semibold leading-6 text-gray-900"
-                >
-                  案件類型
-                </h3>
-              </div>
-            </div>
-            <div class="mt-5 md:mt-0 md:col-span-2">
+            <div class="mt-5 md:mt-0 md:col-span-1">
               <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                  <div class="grid grid-cols-6 gap-6">
+                <div
+                  class="px-4 py-5 bg-gradient-to-r from-blue-100 to-indigo-100 sm:p-6"
+                >
+                  <div class="grid grid-cols-2 gap-6">
                     <div class=" sm:col-span-1">
                       <label
                         class="ml-4 block text-lg font-semibold text-gray-700"
@@ -31,7 +24,7 @@
                       </div>
                     </div>
 
-                    <div class="col-span-2 sm:col-span-1">
+                    <div class="col-span-1 sm:col-span-1">
                       <label
                         for="date"
                         class="block text-lg font-semibold  text-gray-700"
@@ -47,23 +40,7 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class="col-span-2 col-end-7">
-                      <label
-                        for="status"
-                        class="block text-lg font-semibold text-gray-700"
-                        >狀態</label
-                      >
-                      <select
-                        id="status"
-                        disabled
-                        name="status"
-                        autocomplete="status"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg font-semibold"
-                      >
-                        <option>處理中</option>
-                        <option>結案</option>
-                      </select>
-                    </div>
+
                     <div class=" sm:col-span-1">
                       <label
                         for="typesMajor"
@@ -104,7 +81,24 @@
                         >
                       </select>
                     </div>
-                    <div class=" col-span-2 col-end-7">
+                    <div class="col-span-1">
+                      <label
+                        for="status"
+                        class="block text-lg font-semibold text-gray-700"
+                        >狀態</label
+                      >
+                      <select
+                        id="status"
+                        disabled
+                        name="status"
+                        autocomplete="status"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg font-semibold"
+                      >
+                        <option>處理中</option>
+                        <option>結案</option>
+                      </select>
+                    </div>
+                    <div class=" col-span-1">
                       <label
                         for="personInCharge"
                         class="block text-lg font-semibold text-gray-700"
@@ -123,37 +117,11 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="mt-10 sm:mt-0">
-          <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-              <div class="px-4 sm:px-0 text-right">
-                <h3
-                  class="text-2xl pt-4 px-8 font-semibold leading-6 text-gray-900"
-                >
-                  基本資料
-                </h3>
-              </div>
-            </div>
-            <div class="mt-5 md:mt-0 md:col-span-2">
+            <div class="mt-5 md:mt-0 md:col-span-1">
               <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="px-4 py-5 bg-indigo-100 sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-2">
-                      <label class="block text-lg font-semibold text-gray-700"
-                        >姓名</label
-                      >
-                      <input
-                        disabled
-                        v-model="clientName"
-                        type="text"
-                        name="first_name"
-                        autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
-                      />
-                    </div>
-                    <div class="col-span-1">
+                    <div class="col-span-3 sm:col-span-2">
                       <label class="block text-lg font-semibold text-gray-700"
                         >山平原</label
                       >
@@ -163,10 +131,11 @@
                         type="text"
                         name="first_name"
                         autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class="col-span-1">
+
+                    <div class="col-span-3 sm:col-span-2">
                       <label class="block text-lg font-semibold text-gray-700"
                         >族群</label
                       >
@@ -176,10 +145,10 @@
                         type="text"
                         name="first_name"
                         autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class="col-span-1">
+                    <div class="col-span-3 sm:col-span-2">
                       <label class="block text-lg font-semibold text-gray-700"
                         >生日</label
                       >
@@ -189,25 +158,11 @@
                         type="text"
                         name="first_name"
                         autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class="col-span-1">
-                      <label class="block text-lg font-semibold text-gray-700"
-                        >性別</label
-                      >
-                      <input
-                        disabled
-                        v-model="clientSex"
-                        type="text"
-                        name="first_name"
-                        autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
-                      />
-                    </div>
-
-                    <div class="col-span-2">
-                      <label class="block text-lg font-semibold text-gray-700"
+                    <div class=" sm:col-span-2 col-span-3">
+                      <label class="block text- font-semibold text-gray-700"
                         >身分證號</label
                       >
                       <input
@@ -216,10 +171,11 @@
                         type="text"
                         name="first_name"
                         autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-md font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class="col-span-2">
+
+                    <div class=" sm:col-span-2 col-span-3">
                       <label class="block text-lg font-semibold text-gray-700"
                         >手機</label
                       >
@@ -229,10 +185,10 @@
                         type="text"
                         name="first_name"
                         autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class="col-span-2">
+                    <div class=" col-span-3 sm:col-span-2">
                       <label class="block text-lg font-semibold text-gray-700"
                         >電話</label
                       >
@@ -242,6 +198,119 @@
                         type="text"
                         name="first_name"
                         autocomplete="given-name"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                    <div class=" col-span-6">
+                      <label class="block text-lg font-semibold text-gray-700"
+                        >地址</label
+                      >
+                      <input
+                        disabled
+                        v-model="clientAddr"
+                        type="text"
+                        name="first_name"
+                        autocomplete="given-name"
+                        class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 md:mt-0 md:col-span-1">
+              <div class="shadow overflow-hidden sm:rounded-md">
+                <div
+                  class="px-4 py-5 bg-gradient-to-r from-indigo-100 to-red-100 sm:p-6"
+                >
+                  <div class="grid grid-cols-2 gap-6">
+                    <div class=" col-span-1">
+                      <label
+                        for="relation1"
+                        class="block text-lg font-semibold text-gray-700"
+                        >關係人</label
+                      >
+                      <input
+                        type="text"
+                        name="relation1"
+                        id="relation1"
+                        v-model="case__.relation1"
+                        autocomplete="family-name"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                    <div class=" col-span-1">
+                      <label
+                        for="contact1"
+                        class="block text-lg font-semibold text-gray-700"
+                        >電話</label
+                      >
+                      <input
+                        type="text"
+                        name="contact1"
+                        id="contact1"
+                        v-model="case__.contact1"
+                        autocomplete="family-name"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                    <div class=" col-span-1">
+                      <label
+                        for="relation2"
+                        class="block text-lg font-semibold text-gray-700"
+                        >關係人</label
+                      >
+                      <input
+                        type="text"
+                        name="relation2"
+                        id="relation2"
+                        v-model="case__.relation2"
+                        autocomplete="family-name"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                    <div class=" col-span-1">
+                      <label
+                        for="contact2"
+                        class="block text-lg font-semibold text-gray-700"
+                        >電話</label
+                      >
+                      <input
+                        type="text"
+                        name="contact2"
+                        id="contact2"
+                        v-model="case__.contact2"
+                        autocomplete="family-name"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                    <div class=" col-span-1">
+                      <label
+                        for="relation3"
+                        class="block text-lg font-semibold text-gray-700"
+                        >關係人</label
+                      >
+                      <input
+                        type="text"
+                        name="relation3"
+                        id="relation3"
+                        v-model="case__.relation3"
+                        autocomplete="family-name"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
+                      />
+                    </div>
+                    <div class=" col-span-1">
+                      <label
+                        for="contact3"
+                        class="block text-lg font-semibold text-gray-700"
+                        >電話</label
+                      >
+                      <input
+                        type="text"
+                        name="contact3"
+                        id="contact3"
+                        v-model="case__.contact3"
+                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -252,37 +321,48 @@
           </div>
         </div>
         <div class="mt-10 sm:mt-0">
-          <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-              <div class="px-4 sm:px-0 text-right">
-                <h3
-                  class="text-2xl pt-4 px-8 font-semibold leading-6 text-gray-900"
-                >
-                  紀錄
-                </h3>
-              </div>
-            </div>
-            <div class="mt-5 md:mt-0 md:col-span-2">
+          <div class="md:grid md:grid-cols-6 md:gap-6">
+            <div class="mt-5 md:mt-0 md:col-span-6">
               <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                  <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-6">
+                <div
+                  class="px-4 py-5 bg-gradient-to-r from-blue-100 to-red-100 sm:p-6"
+                >
+                  <div class="grid grid-cols-2 gap-2">
+                    <div class="col-span-2 sm:col-span-1">
                       <label
                         for="first_name"
                         class="block text-lg font-semibold text-gray-700"
-                        >紀錄</label
+                        >案件狀況</label
                       >
                       <textarea
                         type="text"
                         name="first_name"
                         id="first_name"
+                        v-model="case__.note"
                         autocomplete="given-name"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md h-72"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md h-40"
+                      ></textarea>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                      <label
+                        for="first_name"
+                        class="block text-lg font-semibold text-gray-700"
+                        >處理紀錄</label
+                      >
+                      <textarea
+                        type="text"
+                        name="first_name"
+                        id="first_name"
+                        v-model="case__.handle"
+                        autocomplete="given-name"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md h-40"
                       ></textarea>
                     </div>
                   </div>
                 </div>
-                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                <div
+                  class="px-4 py-3 bg-gradient-to-r from-blue-100 to-red-100 text-right sm:px-6 "
+                >
                   <button
                     @click="create"
                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -317,14 +397,28 @@ export default {
         personInCharge: null,
         typesMajor: null,
         typesMinor: null,
+        relation1: null,
+        relation2: null,
+        relation3: null,
+        contact1: null,
+        contact2: null,
+        contact3: null,
         note: null,
+        handle: null,
       },
       clients: [],
       clientName: "",
       clientPlain: "",
       clientGroup: "",
+      clientBirthday: null,
+      clientSex: "",
+      clientIDN: "",
+      clientMobile: "",
+      clientPhone: "",
+      clientAddr: "",
       error: null,
       clientId: null,
+      client: null,
       date: new Date().toISOString().slice(0, 10),
 
       list: {
@@ -340,8 +434,16 @@ export default {
           { id: "3", title: "車禍" },
           { id: "4", title: "家事" },
           { id: "5", title: "繼承" },
+          { id: "6", title: "諮詢" },
+          { id: "7", title: "非訟" },
         ],
-        急難救助: [{ id: "1", title: "急難救助" }],
+        急難救助: [
+          { id: "1", title: "生活扶助" },
+          { id: "2", title: "死亡救助" },
+          { id: "3", title: "急難紓困" },
+          { id: "4", title: "重大災害" },
+          { id: "5", title: "醫療補助" },
+        ],
       },
     };
   },
@@ -366,19 +468,20 @@ export default {
       return;
     },
     setClientId(client) {
-      this.clientId = client.id;
+      this.client = client;
+      console.log("client:", client);
     },
   },
   watch: {
-    clientId: function() {
-      this.case__.name = this.clients[this.clientId - 1].name + "/" + this.date;
-      this.clientName = this.clients[this.clientId - 1].name;
-      this.clientPlain =
-        this.clients[this.clientId - 1].plainMountain === "plain"
-          ? "平原"
-          : "山原";
+    client: function() {
+      this.case__.name = this.client.name + "/" + this.date;
+      this.clientName = this.client.name;
+      if (this.client.plainMountain) {
+        this.clientPlain =
+          this.client.plainMountain === "plain" ? "平原" : "山原";
+      }
 
-      switch (this.clients[this.clientId - 1].group) {
+      switch (this.client.group) {
         case "Amis": {
           this.clientGroup = "阿美";
           break;
@@ -439,19 +542,27 @@ export default {
           this.clientGroup = "雅美";
           break;
         }
+        default:
+          break;
       }
 
-      this.clientBirthday = this.clients[this.clientId - 1].birthday;
-      this.clientSex =
-        this.clients[this.clientId - 1].sex === "male" ? "男" : "女";
-      this.clientIDN = this.clients[this.clientId - 1].IDN;
-      this.clientMobile = this.clients[this.clientId - 1].mobile;
-      this.clientPhone = this.clients[this.clientId - 1].phone;
+      this.clientBirthday = this.client.birthday;
+      if (this.client.sex) {
+        this.clientSex = this.client.sex === "male" ? "男" : "女";
+      }
+      this.clientIDN = this.client.IDN;
+      this.clientMobile = this.client.mobile;
+      this.clientPhone = this.client.phone;
+      this.clientAddr =
+        this.client.city +
+        this.client.dist +
+        this.client.vill +
+        this.client.addr;
     },
   },
   async mounted() {
     try {
-      this.clients = (await ClientService.index()).data;
+      this.clients = (await ClientService.indexAll()).data;
     } catch (err) {
       console.log(err);
     }

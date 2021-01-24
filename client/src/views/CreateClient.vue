@@ -3,11 +3,11 @@
     <panel>
       <!-- This example requires Tailwind CSS v2.0+ -->
       <div
-        class="fixed z-10 inset-0 overflow-y-auto"
+        class="fixed z-10 inset-0 overflow-y-auto "
         v-if="nameFilledUponSubmit"
       >
         <div
-          class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
         >
           <!--
       Background overlay, show/hide based on modal state.
@@ -45,7 +45,7 @@
             aria-modal="true"
             aria-labelledby="modal-headline"
           >
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="bg-white px-4 pt-5  sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div
                   class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
@@ -94,17 +94,19 @@
           </div>
         </div>
       </div>
-      <div class="m-auto sm:mt-0 container min-h-screen">
+      <div class="m-auto sm:mt-0 container">
         <div class="md:grid md:grid-cols-3 md:gap-6">
-          <div class="md:col-span-1">
+          <div class="col-span-3 lg:col-span-1 ">
             <div class="px-4 sm:px-0 pt-8">
               <h3 class="text-3xl font-semibold leading-6 text-gray-900 ml-24">
                 新增族人資料
               </h3>
               <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-gray-200 sm:p-6">
+                <div
+                  class="px-4 py-5 bg-gradient-to-r from-blue-100 to-red-50 sm:p-6"
+                >
                   <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class=" col-span-12 xl:col-span-6 xl:col-start-6">
                       <label
                         for="isDead"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -120,7 +122,7 @@
                       />
                       <label
                         for="alive"
-                        class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class="m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         存
                       </label>
@@ -135,12 +137,12 @@
                       />
                       <label
                         for="dead"
-                        class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class="m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         歿
                       </label>
                     </div>
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class="col-span-6 xl:col-start-6">
                       <label
                         for="disabledStatus"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -159,7 +161,7 @@
                         <option value="heavy">重度</option>
                       </select>
                     </div>
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class="col-span-6 xl:col-start-6">
                       <label
                         for="incomeStatus"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -179,7 +181,7 @@
                       </select>
                     </div>
 
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class="col-span-6 xl:col-span-6 xl:col-start-6">
                       <label
                         for="canCall"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -188,14 +190,14 @@
                       <input
                         id="canCall"
                         name="canCall"
-                        value="ture"
+                        value="true"
                         v-model="client.canCall"
                         type="radio"
                         class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                       />
                       <label
                         for="canCall"
-                        class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class=" m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         可
                       </label>
@@ -210,12 +212,12 @@
                       />
                       <label
                         for="cannotCall"
-                        class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class="m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         不可
                       </label>
                     </div>
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class="col-span-6 xl:col-span-6 xl:col-start-6">
                       <label
                         for="canMail"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -224,14 +226,14 @@
                       <input
                         id="canMail"
                         name="canMail"
-                        value="ture"
+                        value="true"
                         v-model="client.canMail"
                         type="radio"
                         class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
                       />
                       <label
                         for="canMail"
-                        class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class="m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         可
                       </label>
@@ -246,7 +248,7 @@
                       />
                       <label
                         for="cannotCall"
-                        class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class="m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         不可
                       </label>
@@ -254,7 +256,9 @@
                   </div>
                 </div>
               </div>
-              <div class="px-4 py-3 mt-20 bg-gray-200 text-center sm:px-6">
+              <div
+                class="px-4 py-3 mt-20 bg-gray-200 text-center sm:px-6 hidden lg:block"
+              >
                 <button
                   @click="create"
                   class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -264,12 +268,13 @@
               </div>
             </div>
           </div>
-          <div class="mt-5 md:mt-0 md:col-span-2">
-            >
+          <div class="mt-5 md:mt-0 col-span-3 lg:col-span-2 ">
             <div class="shadow overflow-hidden sm:rounded-md">
-              <div class="px-4 py-5 bg-gray-200 sm:p-6">
+              <div
+                class="px-4 py-5 bg-gradient-to-r from-blue-100 to-red-50 sm:p-6"
+              >
                 <div class="grid grid-cols-12 gap-x-6 gap-y-3">
-                  <div class="col-span-4 sm:col-span-4">
+                  <div class="col-span-6 lg:col-span-4">
                     <label
                       for="name"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -285,7 +290,7 @@
                     />
                   </div>
 
-                  <div class="col-span-4 sm:col-span-4">
+                  <div class="col-span-6 lg:col-span-4">
                     <label
                       for="name_Alt"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -301,7 +306,7 @@
                     />
                   </div>
 
-                  <div class="col-span-4 sm:col-span-4">
+                  <div class="col-span-6 lg:col-span-4">
                     <label
                       for="sex"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -343,7 +348,7 @@
                     </div>
                   </div>
 
-                  <div class="col-span-4 sm:col-span-4 ">
+                  <div class="col-span-6 lg:col-span-4 ">
                     <label
                       for="birthday"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -358,7 +363,7 @@
                     />
                   </div>
 
-                  <div class="col-start-5 col-span-2">
+                  <div class="col-span-6 lg:col-start-5 lg:col-span-2">
                     <label
                       for="age"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -371,7 +376,7 @@
                     </span>
                   </div>
 
-                  <div class="col-span-6 sm:col-span-6">
+                  <div class="col-span-6 lg:col-span-6">
                     <label
                       for="IDN"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -386,7 +391,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="group"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -416,7 +421,7 @@
                       <option value="Yami"> 雅美</option>
                     </select>
                   </div>
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="plainMountain"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -433,7 +438,7 @@
                       <option value="mountain">山原</option>
                     </select>
                   </div>
-                  <div class="col-span-6 sm:col-span-6">
+                  <div class="col-span-12 lg:col-span-6">
                     <label
                       for="tribe"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -455,7 +460,7 @@
                     </div>
                   </div>
 
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="mobile"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -471,7 +476,7 @@
                     />
                   </div>
 
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="mobileNote"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -486,7 +491,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="mobileAlt"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -502,7 +507,7 @@
                     />
                   </div>
 
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="mobileAltNote"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -517,7 +522,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="phone"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -533,7 +538,7 @@
                     />
                   </div>
 
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="phoneNote"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -548,7 +553,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="phoneAlt"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -564,7 +569,7 @@
                     />
                   </div>
 
-                  <div class="col-span-3 sm:col-span-3">
+                  <div class="col-span-6 lg:col-span-3">
                     <label
                       for="phoneAltNote"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -586,7 +591,7 @@
                     </div>
                   </div>
 
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       for="city"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -601,7 +606,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       for="dist"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -616,7 +621,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       for="vill"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -632,7 +637,7 @@
                     />
                   </div>
 
-                  <div class="col-span-4 sm:col-span-4">
+                  <div class="col-span-8 lg:col-span-4">
                     <label
                       for="addr"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -647,7 +652,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       for="addrNote"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -663,7 +668,7 @@
                     />
                   </div>
 
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       v-if="client.addr"
                       for="cityAlt"
@@ -680,7 +685,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       v-if="client.addr"
                       for="distAlt"
@@ -697,7 +702,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       v-if="client.addr"
                       for="villAlt"
@@ -715,7 +720,7 @@
                     />
                   </div>
 
-                  <div class="col-span-4 sm:col-span-4">
+                  <div class="col-span-8 lg:col-span-4">
                     <label
                       v-if="client.addr"
                       for="addrAlt"
@@ -732,7 +737,7 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
-                  <div class="col-span-2 sm:col-span-2">
+                  <div class="col-span-4 lg:col-span-2">
                     <label
                       v-if="client.addr"
                       for="addrAltNote"
@@ -750,7 +755,7 @@
                     />
                   </div>
 
-                  <div class="col-span-12 sm:col-span-12">
+                  <div class="col-span-12 lg:col-span-12">
                     <label
                       for="note"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -765,6 +770,16 @@
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md"
                     />
                   </div>
+                </div>
+                <div
+                  class="px-4 sm:py-3 mt-5 sm:mt-20 bg-gray-200 text-center sm:px-6 block lg:hidden"
+                >
+                  <button
+                    @click="create"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    新增
+                  </button>
                 </div>
               </div>
             </div>
@@ -852,4 +867,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.minh {
+  min-height: 100vh - 4rem;
+}
+</style>
