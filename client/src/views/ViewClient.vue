@@ -6,12 +6,335 @@
       @closePanel="closePanel"
     />
     <panel>
-      <button
-        @click="slideOverSwitch = true"
-        class="absolute right-8 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      <div
+        class="fixed z-10 inset-0 overflow-y-auto "
+        v-if="modalContactCreate"
       >
-        案件紀錄
-      </button>
+        <div
+          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+        >
+          <!--
+      Background overlay, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- This element is to trick the browser into centering the modal contents. -->
+          <span
+            class="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+            >&#8203;</span
+          >
+          <!--
+      Modal panel, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
+          <div
+            class="inline-block relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-headline"
+          >
+            <div
+              class="flex justify-between px-8 py-2 bg-gradient-to-tr from-gray-100 to-yellow-50"
+            >
+              <div
+                class="block text-lg sm:text-3xl font-semibold text-gray-700"
+              >
+                增加通聯記錄
+              </div>
+              <div class=" ">
+                <button class="z-30" @click="closeModal">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 18 18"
+                  >
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <CreateContact
+              :client="client"
+              @close-modal="closeModal"
+              class="bg-gradient-to-br from-gray-100 to-yellow-50"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="fixed z-10 inset-0 overflow-y-auto " v-if="modalContact">
+        <div
+          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+        >
+          <!--
+      Background overlay, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- This element is to trick the browser into centering the modal contents. -->
+          <span
+            class="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+            >&#8203;</span
+          >
+          <!--
+      Modal panel, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
+          <div
+            class="inline-block relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-headline"
+          >
+            <div
+              class="flex justify-between px-8 py-2 bg-gradient-to-tr from-gray-100 to-yellow-50"
+            >
+              <div
+                class="block text-lg sm:text-3xl font-semibold text-gray-700"
+              >
+                通聯記錄
+              </div>
+              <div class=" ">
+                <button class="z-30" @click="closeModal">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 18 18"
+                  >
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <ViewContact
+              :client="client"
+              @close-modal="closeModal"
+              class="bg-gradient-to-br from-gray-100 to-yellow-50"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="fixed z-10 inset-0 overflow-y-auto " v-if="modalFamily">
+        <div
+          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+        >
+          <!--
+      Background overlay, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- This element is to trick the browser into centering the modal contents. -->
+          <span
+            class="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+            >&#8203;</span
+          >
+          <!--
+      Modal panel, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
+          <div
+            class="inline-block relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-headline"
+          >
+            <div
+              class="flex justify-between px-8 py-2 bg-gradient-to-tr from-gray-100 to-yellow-50"
+            >
+              <div
+                class="block text-lg sm:text-3xl font-semibold text-gray-700"
+              >
+                家人名單
+              </div>
+              <div class=" ">
+                <button class="z-30" @click="closeModal">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 18 18"
+                  >
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <ViewFamily
+              :client="client"
+              @close-modal="closeModal"
+              class="bg-gradient-to-br from-gray-100 to-yellow-50"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="fixed z-10 inset-0 overflow-y-auto " v-if="modalFamilyCreate">
+        <div
+          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+        >
+          <!--
+      Background overlay, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- This element is to trick the browser into centering the modal contents. -->
+          <span
+            class="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+            >&#8203;</span
+          >
+          <!--
+      Modal panel, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
+          <div
+            class="inline-block relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-headline"
+          >
+            <div
+              class="flex justify-between px-8 py-2 bg-gradient-to-tr from-gray-100 to-yellow-50"
+            >
+              <div
+                class="block text-lg sm:text-3xl font-semibold text-gray-700"
+              >
+                增加家人名單
+              </div>
+              <div class=" ">
+                <button class="z-30" @click="closeModal">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 18 18"
+                  >
+                    <path
+                      d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <CreateFamily
+              :target="client"
+              @close-modal="closeModal"
+              class="bg-gradient-to-br from-gray-100 to-yellow-50"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute right-8 flex flex-col m-2">
+        <button
+          @click="slideOverSwitch = true"
+          class=" top-96 right-8 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          案件紀錄
+        </button>
+        <div class="flex mt-10">
+          <button
+            @click="modalFamily = true"
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          >
+            家人名單
+          </button>
+          <button
+            @click="modalFamilyCreate = true"
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          >
+            +
+          </button>
+        </div>
+        <div class="mt-10">
+          <button
+            @click="modalContact = true"
+            class="inline-flex justify-start py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          >
+            通聯記錄
+          </button>
+          <button
+            @click="modalContactCreate = true"
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
       <div class="m-auto sm:mt-0 container">
         <div class="md:grid md:grid-cols-3 md:gap-6">
           <div class="md:col-span-1">
@@ -727,20 +1050,6 @@
         </div>
       </div>
     </panel>
-
-    <div class="m-auto sm:mt-8 container">
-      <div class="md:grid md:grid-cols-2 md:gap-6">
-        <div class="md:col-span-1">
-          <CreateFamily :target="client" />
-          <ViewFamily :client="client" />
-        </div>
-        <div class="md:col-span-1">
-          <CreateContact :client="client" />
-
-          <ViewContact :client="client" />
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -769,6 +1078,10 @@ export default {
         id: "",
       },
       slideOverSwitch: false,
+      modalContact: false,
+      modalContactCreate: false,
+      modalFamily: false,
+      modalFamilyCreate: false,
     };
   },
   methods: {
@@ -777,6 +1090,12 @@ export default {
     },
     closePanel() {
       this.slideOverSwitch = false;
+    },
+    closeModal() {
+      this.modalContact = false;
+      this.modalContactCreate = false;
+      this.modalFamily = false;
+      this.modalFamilyCreate = false;
     },
   },
   async mounted() {

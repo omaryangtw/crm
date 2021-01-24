@@ -1,60 +1,56 @@
 <template>
   <div>
-    <panel title="增加家人名單">
-      <div class="flex items-center mt-4">
-        <button
-          @click="create"
-          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-bold rounded-full text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    <div class="flex items-center py-6">
+      <button
+        @click="create"
+        class="inline-flex justify-center h-8 w-8 border border-transparent shadow-sm text-lg font-bold rounded-full text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        +
+      </button>
+      <div class="w-2/12 ml-4">
+        <label
+          for="relationship"
+          class="ml-4 block text-lg font-semibold text-gray-700"
+          >關係</label
         >
-          +
-        </button>
-        <div class="w-2/12 ml-4">
-          <label
-            for="relationship"
-            class="ml-4 block text-lg font-semibold text-gray-700"
-            >關係</label
-          >
-          <div>
-            <DropdownList
-              :list="familylist"
-              @on-item-selected="setRelation"
-              @on-item-reset="dropdownSelection = {}"
-            />
-          </div>
-        </div>
-
-        <div class="w-3/12 ml-4">
-          <label class="block text-lg font-semibold text-gray-700">姓名</label>
-          <div>
-            <DropdownList
-              :list="clients"
-              @on-item-selected="setTargetId"
-              @on-item-reset="dropdownSelection = {}"
-            />
-          </div>
-        </div>
         <div>
-          <label class="block text-lg font-semibold text-gray-700"
-            >基礎資料</label
-          >
-          <div class="mt-2 p-2 block text-base font-semibold text-gray-700">
-            {{ targetInfoString }}
-          </div>
+          <DropdownList
+            :list="familylist"
+            @on-item-selected="setRelation"
+            @on-item-reset="dropdownSelection = {}"
+          />
         </div>
       </div>
-    </panel>
+
+      <div class="w-3/12 ml-4">
+        <label class="block text-lg font-semibold text-gray-700">姓名</label>
+        <div>
+          <DropdownList
+            :list="clients"
+            @on-item-selected="setTargetId"
+            @on-item-reset="dropdownSelection = {}"
+          />
+        </div>
+      </div>
+      <div>
+        <label class="block text-lg font-semibold text-gray-700"
+          >基礎資料</label
+        >
+        <div class="mt-2 p-2 block text-base font-semibold text-gray-700">
+          {{ targetInfoString }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import FamilyService from "../services/FamilyService";
 import ClientsService from "../services/ClientsService";
-import Panel from "../components/Panel";
 import DropdownList from "../components/DropdownList";
 export default {
   name: "CreateFamily",
   components: {
-    Panel,
     DropdownList,
   },
   data() {
@@ -113,6 +109,7 @@ export default {
           targetId: this.targetId,
           relationship: this.relationship,
         });
+        this.closeModal();
         this.$router.go(0);
       } catch (err) {
         console.log(err);
@@ -124,6 +121,9 @@ export default {
     setTargetId(client) {
       console.log(client);
       this.targetId = client.id;
+    },
+    closeModal() {
+      this.$emit("close-modal");
     },
   },
   async mounted() {
