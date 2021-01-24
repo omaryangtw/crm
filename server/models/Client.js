@@ -50,6 +50,8 @@ module.exports = (sequelize, DataTypes) => {
     villAlt: DataTypes.STRING,
     addr: DataTypes.STRING,
     addrAlt: DataTypes.STRING,
+    addrNote: DataTypes.STRING,
+    addrAltNote: DataTypes.STRING,
     note: DataTypes.TEXT,
   });
 

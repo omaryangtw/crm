@@ -3,7 +3,7 @@
     <div class="m-auto sm:mt-0 pt-10 container ">
       <div class="md:grid md:grid-cols-6 md:gap-6">
         <div class="md:col-span-1">
-          <SearchCase @filterStatus="filterStatus" />
+          <SearchCase />
         </div>
         <div class="md:col-span-5">
           <panel title="案件列表">

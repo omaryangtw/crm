@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   db: {
     database: process.env.DB_NAME || "crm",
@@ -6,7 +8,7 @@ module.exports = {
     options: {
       dialect: process.env.DIALECT || "sqlite",
       host: process.env.HOST || "localhost",
-      storage: "./crm.sqlite",
+      storage: path.resolve(__dirname, "../../crm.sqlite"),
       logQueryParameters: true,
     },
   },

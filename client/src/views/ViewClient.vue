@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-200">
     <SlideOvers
-      :clientId="clientId"
+      :clientId="clientIdModified"
       :slideOverSwitch="slideOverSwitch"
       @closePanel="closePanel"
     />
@@ -101,7 +101,7 @@
                         disabled
                         id="canCall"
                         name="canCall"
-                        value="ture"
+                        value="true"
                         v-model="client.canCall"
                         type="radio"
                         class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
@@ -139,7 +139,7 @@
                         disabled
                         id="canMail"
                         name="canMail"
-                        value="ture"
+                        value="true"
                         v-model="client.canMail"
                         type="radio"
                         class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300"
@@ -787,6 +787,9 @@ export default {
   computed: {
     age: function() {
       return 2021 - parseInt(this.client.birthday);
+    },
+    clientIdModified: function() {
+      return parseInt(this.clientId);
     },
   },
 };

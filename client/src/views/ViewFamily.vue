@@ -53,7 +53,6 @@
                     <td class="px-1 py-4 whitespace-nowrap">
                       <a
                         @click="remove(member)"
-                        type="submit"
                         class="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-lg font-bold rounded-full text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
                         -
@@ -103,18 +102,15 @@ export default {
     async remove(him) {
       try {
         await FamilyService.remove(this.client.id, him.id);
-        this.$router.go(0);
       } catch (err) {
         console.log(err);
       }
     },
     async redirect(clientId) {
-      console.log("pressed");
-      await this.$router.push({
+      this.$router.push({
         name: "client",
         params: { clientId: clientId },
       });
-      await this.reload();
     },
   },
 };

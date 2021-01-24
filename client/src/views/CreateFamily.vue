@@ -4,7 +4,6 @@
       <div class="flex items-center mt-4">
         <button
           @click="create"
-          type="submit"
           class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-bold rounded-full text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           +
