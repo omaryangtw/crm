@@ -23,7 +23,7 @@ module.exports = {
           ],
         });
       } else {
-        cases = await Case.findAll({ limit: 10 });
+        cases = await Case.findAll({ where: { status: "處理中" } });
       }
 
       res.send(cases);

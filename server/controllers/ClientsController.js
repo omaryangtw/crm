@@ -8,6 +8,7 @@ module.exports = {
       console.log(req.query);
       if (search) {
         clients = await Client.findAll({
+          limit: 8,
           where: {
             [or]: ["name", "mobile", "mobileAlt"].map((key) => ({
               [key]: {
@@ -19,11 +20,23 @@ module.exports = {
         });
       } else {
         clients = await Client.findAll({
-          limit: 10,
+          limit: 8,
+          order: [["updatedAt", "DESC"]],
           include: { all: true, nested: true },
         });
       }
 
+      res.send(clients);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
+      });
+    }
+  },
+  async indexAll(req, res) {
+    try {
+      let clients = null;
+      clients = await Client.findAll({});
       res.send(clients);
     } catch (err) {
       res.status(500).send({

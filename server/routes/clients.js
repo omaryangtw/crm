@@ -3,6 +3,7 @@ var router = express.Router();
 const ClientsController = require("../controllers/ClientsController");
 
 router.get("/", ClientsController.index);
+router.get("/all", ClientsController.indexAll);
 router.post("/", (req, res) => {
   ClientsController.post(req, res);
 });

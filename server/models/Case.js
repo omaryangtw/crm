@@ -14,9 +14,24 @@ module.exports = (sequelize, DataTypes) => {
       "勞資",
       "車禍",
       "家事",
-      "繼承"
+      "繼承",
+      "刑事",
+      "諮詢",
+      "非訟",
+      "生活扶助",
+      "死亡救助",
+      "急難紓困",
+      "重大災害",
+      "醫療補助"
     ),
+    relation1: DataTypes.STRING,
+    relation2: DataTypes.STRING,
+    relation3: DataTypes.STRING,
+    contact1: DataTypes.STRING,
+    contact2: DataTypes.STRING,
+    contact3: DataTypes.STRING,
     note: DataTypes.TEXT,
+    handle: DataTypes.TEXT,
   });
 
   Case.associate = (models) => {

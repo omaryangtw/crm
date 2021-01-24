@@ -17,4 +17,7 @@ export default {
   get(id) {
     return api().get(`clients/${id}`);
   },
+  indexAll() {
+    return api().get("clients/all");
+  },
 };
