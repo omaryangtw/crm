@@ -2,10 +2,10 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Register from "../views/Register.vue";
 import Login from "../views/Login.vue";
-import Clients from "../views/Clients";
-import CreateClient from "../views/CreateClient";
-import ViewClient from "../views/ViewClient";
-import EditClient from "../views/EditClient";
+import Clients from "../views/Client/Clients";
+import CreateClient from "../views/Client/CreateClient";
+import ViewClient from "../views/Client/ViewClient";
+import EditClient from "../views/Client/EditClient";
 import Cases from "../views/Case/Cases";
 import CreateCase from "../views/Case/CreateCase";
 import ViewCase from "../views/Case/ViewCase";
@@ -122,15 +122,6 @@ const routes = [
         next({ name: "Login" });
       }
     },
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
 ];
 

@@ -86,6 +86,7 @@
                         disabled
                         id="status"
                         name="status"
+                        v-model="case__.status"
                         autocomplete="status"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg font-semibold"
                       >
@@ -320,6 +321,11 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="hidden sm:block" aria-hidden="true">
+          <div class="py-5">
+            <div class="border-t border-gray-200"></div>
           </div>
         </div>
         <div class="mt-10 sm:mt-0">

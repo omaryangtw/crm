@@ -8,5 +8,6 @@ router.post("/", (req, res) => {
 router.delete("/:clientId/:contactId", (req, res) => {
   ContactController.delete(req, res);
 });
+router.get("/", ContactController.index);
 
 module.exports = router;

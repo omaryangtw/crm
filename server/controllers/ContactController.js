@@ -10,7 +10,7 @@ module.exports = {
         console.log("search string = ", search);
         contacts = await Contact.findAll({
           where: {
-            [or]: ["name"].map((key) => ({
+            [or]: ["name", "record"].map((key) => ({
               [key]: {
                 [like]: `%${search}%`,
               },
@@ -23,13 +23,16 @@ module.exports = {
           ],
         });
       } else {
-        contacts = await Contact.findAll({ id: {} });
+        contacts = await Contact.findAll({
+          limit: 8,
+          order: [["date", "desc"]],
+        });
       }
 
-      res.send(cases);
+      res.send(contacts);
     } catch (err) {
       res.status(500).send({
-        error: "an error occured trying to fetch cases",
+        error: "an error occured trying to fetch contacts",
       });
     }
   },

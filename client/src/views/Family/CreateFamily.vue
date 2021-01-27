@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import FamilyService from "../services/FamilyService";
-import ClientsService from "../services/ClientsService";
-import DropdownList from "../components/DropdownList";
+import FamilyService from "../../services/FamilyService";
+import ClientsService from "../../services/ClientsService";
+import DropdownList from "../../components/DropdownList";
 export default {
   name: "CreateFamily",
   components: {
@@ -110,7 +110,6 @@ export default {
           relationship: this.relationship,
         });
         this.closeModal();
-        this.$router.go(0);
       } catch (err) {
         console.log(err);
       }

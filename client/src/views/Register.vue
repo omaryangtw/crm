@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import AuthenticationService from "../services/AuthenticationService/AuthenticationServices";
+import AuthenticationService from "../services/AuthenticationServices";
 import { mapActions } from "vuex";
 export default {
   name: "Register",
@@ -74,6 +74,7 @@ export default {
           email: this.email,
           password: this.password,
         });
+        this.$router.push("/login");
         this.setToken(response.data.token);
         this.setUser(response.data.user);
       } catch (error) {

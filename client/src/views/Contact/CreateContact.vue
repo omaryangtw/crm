@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import ContactService from "../services/ConstactService";
+import ContactService from "../../services/ConstactService";
 export default {
   name: "CreateContact",
   components: {},
@@ -133,7 +133,6 @@ export default {
           contact: this.contact,
         });
         this.closeModal();
-        this.$router.go(0);
       } catch (err) {
         console.log(err);
       }

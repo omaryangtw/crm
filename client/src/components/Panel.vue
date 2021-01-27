@@ -1,9 +1,9 @@
 <template>
-  <div class="text-xl m-auto bg-gray-200 px-10 ">
-    <div class="text-3xl font-semibold leading-6 text-gray-900">
+  <div class="text-xl m-auto bg-gray-200 panel">
+    <div class="text-3xl font-semibold leading-6 text-gray-900 p-4 container">
       {{ title }}
     </div>
-    <div class="px-4" style="min-height:93vh ">
+    <div class="pt-4">
       <slot> </slot>
     </div>
   </div>
@@ -15,4 +15,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.panel {
+  min-height: calc(100vh - 4rem);
+}
+</style>

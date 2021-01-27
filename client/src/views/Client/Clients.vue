@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-gray-200 min-h-screen">
-    <div class="m-auto sm:mt-0 pt-10 container ">
+  <div class="bg-gray-200">
+    <div class="m-auto sm:mt-0 container ">
       <div class="md:grid md:grid-cols-6 md:gap-6">
         <div class="md:col-span-1">
           <Search />
@@ -122,8 +122,8 @@
                               }}{{ client.addr }}
                             </div>
                             <div class="text-md text-gray-500">
-                              {{ client.cityNote }}{{ client.distNote
-                              }}{{ client.villNote }}{{ client.addrNote }}
+                              {{ client.cityAlt }}{{ client.distAlt
+                              }}{{ client.villAlt }}{{ client.addrAlt }}
                             </div>
                           </td>
 
@@ -154,9 +154,9 @@
 </template>
 
 <script>
-import ClientsServices from "../services/ClientsService.js";
-import Panel from "../components/Panel.vue";
-import Search from "./Search";
+import ClientsServices from "../../services/ClientsService.js";
+import Panel from "../../components/Panel.vue";
+import Search from "../Search";
 export default {
   name: "clients",
   components: { Panel, Search },

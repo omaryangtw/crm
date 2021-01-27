@@ -34,8 +34,6 @@ export default {
       selectedItem: {},
       inputValue: "",
       itemList: [],
-      apiLoaded: false,
-      apiUrl: "https://restcountries.eu/rest/v2/all?fields=name;flag",
     };
   },
   props: {
@@ -99,7 +97,6 @@ export default {
   cursor: pointer;
 }
 .dropdown-list {
-  position: absolute;
   width: 100%;
   max-height: 500px;
   margin-top: 4px;

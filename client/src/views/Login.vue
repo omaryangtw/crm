@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import AuthenticationService from "../services/AuthenticationService/AuthenticationServices";
+import AuthenticationService from "../services/AuthenticationServices";
 import { mapActions } from "vuex";
 export default {
   name: "Login",

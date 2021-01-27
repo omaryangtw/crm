@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import FamilyService from "../services/FamilyService";
+import FamilyService from "../../services/FamilyService";
 export default {
   name: "ViewFamily",
   components: {},

@@ -1,5 +1,5 @@
-const { Client, Case, Family } = require("../models");
-const { or, like } = require("sequelize").Op;
+const { Client, Case, Family, Contact, sequelize } = require("../models");
+const { or, like, not, and } = require("sequelize").Op;
 module.exports = {
   async index(req, res) {
     try {
@@ -22,7 +22,6 @@ module.exports = {
         clients = await Client.findAll({
           limit: 8,
           order: [["updatedAt", "DESC"]],
-          include: { all: true, nested: true },
         });
       }
 
@@ -36,7 +35,21 @@ module.exports = {
   async indexAll(req, res) {
     try {
       let clients = null;
-      clients = await Client.findAll({});
+      clients = await Client.findAll({
+        attributes: [
+          "name",
+          "plainMountain",
+          "group",
+          "birthday",
+          "IDN",
+          "phone",
+          "mobile",
+          "city",
+          "dist",
+          "vill",
+          "addr",
+        ],
+      });
       res.send(clients);
     } catch (err) {
       res.status(500).send({
@@ -44,6 +57,84 @@ module.exports = {
       });
     }
   },
+  async birthdaylist(req, res) {
+    try {
+      let clients = null;
+      clients = await Client.findAll({
+        attributes: [
+          "id",
+          "name",
+          "birthday",
+          "age",
+          "phone",
+          "mobile",
+          "dist",
+          "vill",
+          "addr",
+        ],
+        where: {
+          [and]: [
+            {
+              birthday: {
+                [not]: null,
+              },
+              addr: {
+                [not]: null,
+              },
+              [or]: [
+                {
+                  phone: {
+                    [not]: null,
+                  },
+                },
+                {
+                  mobile: {
+                    [not]: null,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      });
+
+      res.send(clients);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
+      });
+    }
+  },
+  async household(req, res) {
+    try {
+      let clients = null;
+      clients = await Client.findAll({
+        where: {
+          addr: { [not]: null },
+          isDead: false,
+          canMail: true,
+        },
+        attributes: [
+          "id",
+          "name",
+          sequelize.fn("min", sequelize.col("birthday")),
+          "sex",
+          "city",
+          "dist",
+          "vill",
+          "addr",
+        ],
+        group: "addr",
+      });
+
+      res.send(clients);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
+      });
+    }
+  },
+
   async post(req, res) {
     try {
       const client = await Client.create(req.body);
@@ -72,7 +163,12 @@ module.exports = {
     try {
       const client = await Client.findOne({
         where: { id: req.params.clientId },
-        include: { all: true, nested: true },
+        include: [
+          /* 
+          { model: Contact, order: [Contact, "date", "DESC"] },
+          { model: Case }, */
+          { all: true, nested: true },
+        ],
       });
       res.send(client);
     } catch (err) {

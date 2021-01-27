@@ -116,7 +116,7 @@
         To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
     -->
           <div
-            class="inline-block relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full"
+            class="p-3 inline-block relative align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-headline"
@@ -129,7 +129,7 @@
               >
                 通聯記錄
               </div>
-              <div class=" ">
+              <div>
                 <button class="z-30" @click="closeModal">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -336,31 +336,69 @@
       </div>
 
       <div class="m-auto sm:mt-0 container">
-        <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="md:grid md:grid-cols-4 md:gap-6">
           <div class="md:col-span-1">
             <div class="px-4 sm:px-0 pt-8">
               <div class="flex justify-center">
-                <h3
-                  class="text-4xl font-semibold leading-6 "
-                  :class="{ 'text-red-600': client.isDead }"
-                >
-                  {{ client.name }}
-                </h3>
+                <div v-show="client.sex === 'male'">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    aria-hidden="true"
+                    focusable="false"
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    class="h-10 w-10 mr-2"
+                    preserveAspectRatio="xMidYMid meet"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M9 9c1.29 0 2.5.41 3.47 1.11L17.58 5H13V3h8v8h-2V6.41l-5.11 5.09c.7 1 1.11 2.2 1.11 3.5a6 6 0 0 1-6 6a6 6 0 0 1-6-6a6 6 0 0 1 6-6m0 2a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4z"
+                      fill="#3B82F6"
+                    />
+                  </svg>
+                </div>
+                <div v-show="client.sex === 'female'">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    aria-hidden="true"
+                    focusable="false"
+                    class="h-10 w-10 mr-2"
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    preserveAspectRatio="xMidYMid meet"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 4a6 6 0 0 1 6 6c0 2.97-2.16 5.44-5 5.92V18h2v2h-2v2h-2v-2H9v-2h2v-2.08c-2.84-.48-5-2.95-5-5.92a6 6 0 0 1 6-6m0 2a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4z"
+                      fill="#EF4444"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3
+                    class="text-4xl font-semibold leading-6 "
+                    :class="{ 'text-red-600': client.isDead }"
+                  >
+                    {{ client.name }}
+                  </h3>
+                  <span
+                    class="block text-xl sm:text-2xl font-semibold text-gray-700 leading-3 h-6"
+                  >
+                    {{ client.nameAlt }}
+                  </span>
+                </div>
               </div>
               <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-gray-200 sm:p-6">
                   <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-6 sm:col-start-6" v-if="client.isDead">
+                    <div class="col-span-12" v-if="client.isDead">
                       <label
                         for="isDead"
                         class="block text-lg sm:text-xl font-bold text-red-700"
                         >死亡</label
                       >
                     </div>
-                    <div
-                      class="col-span-6 sm:col-start-6"
-                      v-if="client.disabledStatus"
-                    >
+                    <div class="col-span-12" v-if="client.disabledStatus">
                       <label
                         for="disabledStatus"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -385,10 +423,7 @@
                         重度
                       </div>
                     </div>
-                    <div
-                      class="col-span-6 sm:col-start-6"
-                      v-if="client.incomeStatus"
-                    >
+                    <div class="col-span-12" v-if="client.incomeStatus">
                       <label
                         for="incomeStatus"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -414,7 +449,7 @@
                       </div>
                     </div>
 
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class="col-span-12">
                       <label
                         for="canCall"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -452,7 +487,7 @@
                         不可
                       </label>
                     </div>
-                    <div class="col-span-6 sm:col-start-6">
+                    <div class="col-span-12 ">
                       <label
                         for="canMail"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -508,88 +543,10 @@
               </div>
             </div>
           </div>
-          <div class="mt-5 md:mt-0 md:col-span-2">
+          <div class="mt-5 md:mt-0 md:col-span-3">
             <div class="shadow overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-gray-200 sm:p-6">
                 <div class="grid grid-cols-12 gap-x-6 gap-y-1">
-                  <div class="col-span-4 sm:col-span-4">
-                    <label
-                      for="name"
-                      class="block text-lg sm:text-xl font-semibold text-gray-700"
-                      >姓名</label
-                    >
-                    <input
-                      disabled
-                      type="text"
-                      name="name"
-                      id="name"
-                      autocomplete="given-name"
-                      v-model="client.name"
-                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
-                    />
-                  </div>
-
-                  <div class="col-span-4 sm:col-span-4">
-                    <label
-                      for="name_Alt"
-                      class="block text-lg sm:text-xl font-semibold text-gray-700"
-                      >族名</label
-                    >
-                    <input
-                      disabled
-                      type="text"
-                      name="name_Alt"
-                      id="name_Alt"
-                      autocomplete="family-name"
-                      v-model="client.nameAlt"
-                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
-                    />
-                  </div>
-
-                  <div class="col-span-4 sm:col-span-4">
-                    <label
-                      for="sex"
-                      class="block text-lg sm:text-xl font-semibold text-gray-700"
-                      >性別</label
-                    >
-                    <div class="flex justify-around mt-2">
-                      <div>
-                        <input
-                          disabled
-                          id="male"
-                          name="sex"
-                          value="male"
-                          v-model="client.sex"
-                          type="radio"
-                          class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
-                        />
-                        <label
-                          for="male"
-                          class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
-                        >
-                          男
-                        </label>
-                      </div>
-                      <div>
-                        <input
-                          disabled
-                          id="female"
-                          name="sex"
-                          value="female"
-                          v-model="client.sex"
-                          type="radio"
-                          class="focus:ring-red-500 h-4 w-4 text-red-600 border-gray-300 ml-12 sm:ml-5"
-                        />
-                        <label
-                          for="female"
-                          class="ml-3 text-lg sm:text-xl font-semibold text-gray-700"
-                        >
-                          女
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
                   <div class="col-span-4 sm:col-span-4 ">
                     <label
                       for="birthday"
@@ -654,7 +611,7 @@
                       name="group"
                       autocomplete="group"
                       v-model="client.group"
-                      class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl bg-gray-100"
+                      class="mt-1 block w-full py-2 px-3 border  bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl "
                     >
                       <option value="Amis">阿美</option>
                       <option value="Atayal">泰雅</option>
@@ -662,6 +619,7 @@
                       <option value="Kanakanavu">卡那卡那富 </option>
                       <option value="Kavalan">噶瑪蘭 </option>
                       <option value="Paiwan"> 排灣</option>
+                      <option value="Puyuma"> 卑南</option>
                       <option value="Rukai">魯凱 </option>
                       <option value="Saaroa"> 撒阿魯哇</option>
                       <option value="Saisiyat"> 賽夏</option>
@@ -685,7 +643,7 @@
                       name="plainMountain"
                       autocomplete="plainMountain"
                       v-model="client.plainMountain"
-                      class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl bg-gray-100"
+                      class="mt-1 block w-full py-2 px-3 border  bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl "
                     >
                       <option value="plain">平原</option>
                       <option value="mountain">山原</option>
@@ -1054,13 +1012,13 @@
 </template>
 
 <script>
-import ClientsService from "../services/ClientsService";
-import Panel from "../components/Panel";
-import CreateFamily from "./CreateFamily";
-import ViewFamily from "./ViewFamily";
-import CreateContact from "./CreateContact";
-import ViewContact from "./ViewContact.vue";
-import SlideOvers from "../components/SlideOvers.vue";
+import ClientsService from "../../services/ClientsService";
+import Panel from "../../components/Panel";
+import CreateFamily from "../Family/CreateFamily";
+import ViewFamily from "../Family/ViewFamily";
+import CreateContact from "../Contact/CreateContact";
+import ViewContact from "../Contact/ViewContact.vue";
+import SlideOvers from "../../components/SlideOvers.vue";
 export default {
   name: "ViewClient",
   components: {
@@ -1101,7 +1059,7 @@ export default {
   async mounted() {
     this.clientId = this.$store.state.route.params.clientId;
     this.client = (await ClientsService.get(this.clientId)).data;
-    console.log(this.client.birthday);
+    console.log("user", this.$store.state.user.email);
   },
   computed: {
     age: function() {

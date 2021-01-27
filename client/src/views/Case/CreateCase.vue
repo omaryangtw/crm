@@ -320,6 +320,11 @@
             </div>
           </div>
         </div>
+        <div class="hidden sm:block" aria-hidden="true">
+          <div class="py-5">
+            <div class="border-t border-gray-200"></div>
+          </div>
+        </div>
         <div class="mt-10 sm:mt-0">
           <div class="md:grid md:grid-cols-6 md:gap-6">
             <div class="mt-5 md:mt-0 md:col-span-6">
@@ -504,6 +509,10 @@ export default {
         }
         case "Paiwan": {
           this.clientGroup = " 排灣";
+          break;
+        }
+        case "Puyuma": {
+          this.clientGroup = " 卑南";
           break;
         }
         case "Rukai": {

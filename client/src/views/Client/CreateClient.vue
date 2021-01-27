@@ -791,8 +791,8 @@
 </template>
 
 <script>
-import ClientsService from "../services/ClientsService";
-import Panel from "../components/Panel";
+import ClientsService from "../../services/ClientsService";
+import Panel from "../../components/Panel";
 export default {
   name: "CreateClient",
   components: {

@@ -7,6 +7,33 @@ module.exports = (sequelize, DataTypes) => {
     birthday: DataTypes.DATEONLY,
     isDead: DataTypes.BOOLEAN,
 
+    age: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING, ["birthday"]),
+      get: function () {
+        if (this.birthday) {
+          return (
+            parseInt(new Date().getUTCFullYear()) - parseInt(this.birthday)
+          );
+        }
+      },
+    },
+    birthYear: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING, ["birthday"]),
+      get: function () {
+        if (this.birthday) {
+          return this.birthday.slice(0, 4);
+        }
+      },
+    },
+    birthMonth: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING, ["birthday"]),
+      get: function () {
+        if (this.birthday) {
+          return this.birthday.slice(5, 7);
+        }
+      },
+    },
+
     incomeStatus: DataTypes.ENUM("low", "mid-low", "mid-low-elderly"),
     disabledStatus: DataTypes.ENUM("light", "mid", "heavy"),
 
@@ -70,6 +97,14 @@ module.exports = (sequelize, DataTypes) => {
       as: "Family",
       through: "ClientClients",
     });
+  };
+
+  Client.getYear = function (date) {
+    try {
+      return date.toISOString().slice(0, 4);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return Client;
