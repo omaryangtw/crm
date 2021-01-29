@@ -1,4 +1,4 @@
-const { Case, Client } = require("../models");
+const { Case, Client, ClientClients } = require("../models");
 const { or, like } = require("sequelize").Op;
 module.exports = {
   async post(req, res) {
@@ -232,6 +232,28 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "an error occured trying to create a relationship",
+      });
+    }
+  },
+  async get(req, res) {
+    try {
+      await Client.findAll({
+        where: {},
+        include: [{ all: true, nested: false }],
+        attributes: [],
+      }).then((clients) => {
+        var relationships = [];
+        clients.forEach((client) => {
+          client.Family.forEach(
+            (relationship) =>
+              (relationships = relationships.concat(relationship.ClientClients))
+          );
+        });
+        res.send(relationships);
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
       });
     }
   },

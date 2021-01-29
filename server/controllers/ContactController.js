@@ -64,4 +64,28 @@ module.exports = {
       });
     }
   },
+  async get(req, res) {
+    try {
+      await Client.findAll({
+        where: {},
+        include: [{ model: Contact }],
+        attributes: [],
+      }).then((clients) => {
+        var records = [];
+        /*         client.forEach((contact) => {
+          records = records.concat(contact);
+        }); */
+        clients.forEach((client) => {
+          client.Contacts.forEach(
+            (record) => (records = records.concat(record))
+          );
+        });
+        res.send(records);
+      });
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to delete a contact record",
+      });
+    }
+  },
 };

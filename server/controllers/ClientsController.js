@@ -37,6 +37,8 @@ module.exports = {
       let clients = null;
       clients = await Client.findAll({
         attributes: [
+          "id",
+          "sex",
           "name",
           "plainMountain",
           "group",
@@ -48,6 +50,53 @@ module.exports = {
           "dist",
           "vill",
           "addr",
+        ],
+      });
+      res.send(clients);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
+      });
+    }
+  },
+  async backup(req, res) {
+    try {
+      let clients = null;
+      clients = await Client.findAll({
+        attributes: [
+          "id",
+          "name",
+          "nameAlt",
+          "IDN",
+          "sex",
+          "birthday",
+          "isDead",
+          "incomeStatus",
+          "disabledStatus",
+          "plainMountain",
+          "group",
+          "tribe",
+          "canCall",
+          "phone",
+          "phoneNote",
+          "phoneAlt",
+          "phoneAltNote",
+          "mobile",
+          "mobileNote",
+          "mobileAlt",
+          "mobileAltNote",
+          "canMail",
+          "city",
+          "cityAlt",
+          "dist",
+          "distAlt",
+          "vill",
+          "villAlt",
+          "addr",
+          "addrAlt",
+          "addrNote",
+          "addrAltNote",
+          "note",
         ],
       });
       res.send(clients);
