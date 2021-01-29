@@ -38,6 +38,7 @@ module.exports = {
       clients = await Client.findAll({
         attributes: [
           "id",
+          "birthMonth",
           "sex",
           "name",
           "plainMountain",
@@ -97,6 +98,8 @@ module.exports = {
           "addrNote",
           "addrAltNote",
           "note",
+          "createdAt",
+          "updatedAt",
         ],
       });
       res.send(clients);

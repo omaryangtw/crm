@@ -11,7 +11,6 @@
           <input
             type="date"
             id="date"
-            autocomplete="given-date"
             v-model="contact.date"
             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm  sm:text-base border-gray-300 rounded-md bg-gray-100"
           />
@@ -62,7 +61,6 @@
             name="employee"
             v-model="contact.personInCharge"
             id="employee"
-            autocomplete="email"
             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg  border-gray-300 rounded-md bg-gray-50"
           />
         </div>
@@ -77,7 +75,6 @@
             name="record"
             v-model="contact.record"
             id="record"
-            autocomplete="email"
             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg  border-gray-300 rounded-md bg-gray-50"
           />
         </div>

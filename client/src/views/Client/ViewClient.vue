@@ -595,7 +595,6 @@
                       name="IDN"
                       v-model="client.IDN"
                       id="IDN"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -605,31 +604,14 @@
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
                       >族別</label
                     >
-                    <select
+                    <input
                       disabled
-                      id="group"
+                      type="text"
                       name="group"
-                      autocomplete="group"
                       v-model="client.group"
-                      class="mt-1 block w-full py-2 px-3 border  bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl "
-                    >
-                      <option value="Amis">阿美</option>
-                      <option value="Atayal">泰雅</option>
-                      <option value="Bunun">布農</option>
-                      <option value="Kanakanavu">卡那卡那富 </option>
-                      <option value="Kavalan">噶瑪蘭 </option>
-                      <option value="Paiwan"> 排灣</option>
-                      <option value="Puyuma"> 卑南</option>
-                      <option value="Rukai">魯凱 </option>
-                      <option value="Saaroa"> 撒阿魯哇</option>
-                      <option value="Saisiyat"> 賽夏</option>
-                      <option value="Sakizaya"> 撒奇萊雅</option>
-                      <option value="Seediq"> 賽德克</option>
-                      <option value="Taroku"> 太魯閣</option>
-                      <option value="Thao"> 邵</option>
-                      <option value="Tsou"> 鄒</option>
-                      <option value="Yami"> 雅美</option>
-                    </select>
+                      id="group"
+                      class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
+                    />
                   </div>
                   <div class="col-span-3 sm:col-span-3">
                     <label
@@ -641,12 +623,11 @@
                       disabled
                       id="plainMountain"
                       name="plainMountain"
-                      autocomplete="plainMountain"
                       v-model="client.plainMountain"
                       class="mt-1 block w-full py-2 px-3 border  bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl "
                     >
-                      <option value="plain">平原</option>
-                      <option value="mountain">山原</option>
+                      <option value="平原">平原</option>
+                      <option value="山原">山原</option>
                     </select>
                   </div>
                   <div class="col-span-6 sm:col-span-6">
@@ -661,7 +642,6 @@
                       name="tribe"
                       id="tribe"
                       v-model="client.tribe"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -684,7 +664,6 @@
                       name="mobile"
                       id="mobile"
                       v-model="client.mobile"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -701,7 +680,6 @@
                       name="mobileNote"
                       id="mobileNote"
                       v-model="client.mobileNote"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -717,7 +695,6 @@
                       name="mobileAlt"
                       id="mobileAlt"
                       v-model="client.mobileAlt"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -734,7 +711,6 @@
                       name="mobileAltNote"
                       id="mobileAltNote"
                       v-model="client.mobileAltNote"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -750,7 +726,6 @@
                       name="phone"
                       id="phone"
                       v-model="client.phone"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -767,7 +742,6 @@
                       name="phoneNote"
                       id="phoneNote"
                       v-model="client.phoneNote"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -783,7 +757,6 @@
                       name="phoneAlt"
                       id="phoneAlt"
                       v-model="client.phoneAlt"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -800,7 +773,6 @@
                       name="phoneAltNote"
                       id="phoneAltNote"
                       v-model="client.phoneAltNote"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -823,7 +795,6 @@
                       name="city"
                       id="city"
                       v-model="client.city"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -839,7 +810,6 @@
                       name="dist"
                       id="dist"
                       v-model="client.dist"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -855,7 +825,6 @@
                       name="vill"
                       id="vill"
                       v-model="client.vill"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -872,7 +841,6 @@
                       name="addr"
                       id="addr"
                       v-model="client.addr"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -888,7 +856,6 @@
                       name="addrNote"
                       id="addrNote"
                       v-model="client.addrNote"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -907,7 +874,6 @@
                       name="cityAlt"
                       id="cityAlt"
                       v-model="client.cityAlt"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -925,7 +891,6 @@
                       name="distAlt"
                       id="distAlt"
                       v-model="client.distAlt"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -943,7 +908,6 @@
                       name="villAlt"
                       id="villAlt"
                       v-model="client.villAlt"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -962,7 +926,6 @@
                       name="addrAlt"
                       id="addrAlt"
                       v-model="client.addrAlt"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -980,7 +943,6 @@
                       name="addrAltNote"
                       id="addrAltNote"
                       v-model="client.addrAltNote"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>
@@ -997,7 +959,6 @@
                       name="note"
                       id="note"
                       v-model="client.note"
-                      autocomplete="email"
                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg sm:text-xl border-gray-300 rounded-md bg-gray-100"
                     />
                   </div>

@@ -4,6 +4,7 @@ const ClientsController = require("../controllers/ClientsController");
 
 router.get("/", ClientsController.index);
 router.get("/all", ClientsController.indexAll);
+router.get("/backup", ClientsController.backup);
 router.get("/household", ClientsController.household);
 router.get("/birthdaylist", ClientsController.birthdaylist);
 router.post("/", (req, res) => {

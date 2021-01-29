@@ -89,10 +89,10 @@
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-md text-gray-900">
-                              {{ groupComputed(client.group) }}
+                              {{ client.group }}
                             </div>
                             <div class="text-md text-gray-500">
-                              {{ plainMountainComputed(client.plainMountain) }}
+                              {{ client.plainMountain }}
                             </div>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
@@ -181,82 +181,6 @@ export default {
   methods: {
     edit(clientId) {
       this.$router.push(`/clients/${clientId}/edit`);
-    },
-    groupComputed(group) {
-      var clientGroup = "";
-      switch (group) {
-        case "Amis": {
-          clientGroup = "阿美";
-          break;
-        }
-        case "Atayal": {
-          clientGroup = "泰雅";
-          break;
-        }
-        case "Bunun": {
-          clientGroup = "布農";
-          break;
-        }
-        case "Kanakanavu": {
-          clientGroup = "卡那卡那富 ";
-          break;
-        }
-        case "Kavalan": {
-          clientGroup = "噶瑪蘭 ";
-          break;
-        }
-        case "Paiwan": {
-          clientGroup = " 排灣";
-          break;
-        }
-        case "Rukai": {
-          clientGroup = "魯凱 ";
-          break;
-        }
-        case "Saaroa": {
-          clientGroup = "撒阿魯哇";
-          break;
-        }
-        case "Saisiyat": {
-          clientGroup = "賽夏";
-          break;
-        }
-        case "Sakizaya": {
-          clientGroup = "撒奇萊雅";
-          break;
-        }
-        case "Seediq": {
-          clientGroup = "賽德克";
-          break;
-        }
-        case "Taroku": {
-          clientGroup = "太魯閣";
-          break;
-        }
-        case "Thao": {
-          clientGroup = "邵";
-          break;
-        }
-        case "Tsou": {
-          clientGroup = "鄒";
-          break;
-        }
-        case "Yami": {
-          clientGroup = "雅美";
-          break;
-        }
-      }
-      return clientGroup;
-    },
-    plainMountainComputed(plainMountain) {
-      var clientPlainMountain = null;
-      if (plainMountain === "plain") {
-        clientPlainMountain = "平原";
-      }
-      if (plainMountain === "mountain") {
-        clientPlainMountain = "山原";
-      }
-      return clientPlainMountain;
     },
   },
 };

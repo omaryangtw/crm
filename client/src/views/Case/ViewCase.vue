@@ -21,7 +21,6 @@
                         type="text"
                         name="date"
                         id="date"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -38,7 +37,6 @@
                         type="text"
                         name="date"
                         id="date"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -55,7 +53,6 @@
                         type="text"
                         name="date"
                         id="date"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -72,7 +69,6 @@
                         type="text"
                         name="date"
                         id="date"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -87,7 +83,6 @@
                         id="status"
                         name="status"
                         v-model="case__.status"
-                        autocomplete="status"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg font-semibold"
                       >
                         <option>處理中</option>
@@ -106,7 +101,6 @@
                         name="personInCharge"
                         id="personInCharge"
                         v-model="case__.personInCharge"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -127,7 +121,6 @@
                         v-model="clientPlain"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -141,7 +134,6 @@
                         v-model="clientGroup"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -154,7 +146,6 @@
                         v-model="clientBirthday"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -167,7 +158,6 @@
                         v-model="clientIDN"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -181,7 +171,6 @@
                         v-model="clientMobile"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -194,7 +183,6 @@
                         v-model="clientPhone"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -207,7 +195,6 @@
                         v-model="clientAddr"
                         type="text"
                         name="first_name"
-                        autocomplete="given-name"
                         class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -233,7 +220,6 @@
                         name="relation1"
                         id="relation1"
                         v-model="case__.relation1"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -249,7 +235,6 @@
                         name="contact1"
                         id="contact1"
                         v-model="case__.contact1"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -265,7 +250,6 @@
                         name="relation2"
                         id="relation2"
                         v-model="case__.relation2"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -281,7 +265,6 @@
                         name="contact2"
                         id="contact2"
                         v-model="case__.contact2"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -297,7 +280,6 @@
                         name="relation3"
                         id="relation3"
                         v-model="case__.relation3"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -313,7 +295,6 @@
                         name="contact3"
                         id="contact3"
                         v-model="case__.contact3"
-                        autocomplete="family-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
@@ -348,7 +329,6 @@
                         name="first_name"
                         id="first_name"
                         v-model="case__.note"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md h-40"
                       ></textarea>
                     </div>
@@ -364,7 +344,6 @@
                         name="first_name"
                         id="first_name"
                         v-model="case__.handle"
-                        autocomplete="given-name"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md h-40"
                       ></textarea>
                     </div>
@@ -444,83 +423,16 @@ export default {
   async mounted() {
     this.caseId = this.$store.state.route.params.caseId;
     this.case__ = (await CaseService.get(this.caseId)).data;
-    console.log("case", this.case__);
-    console.log(this.case__.ClientId);
     this.client = (await ClientsService.get(this.case__.ClientId)).data;
-    console.log("client:", this.client);
     if (this.client.plainMountain) {
-      this.clientPlain =
-        this.client.plainMountain === "plain" ? "平原" : "山原";
+      this.clientPlain = this.client.plainMountain;
     }
-
-    switch (this.client.group) {
-      case "Amis": {
-        this.clientGroup = "阿美";
-        break;
-      }
-      case "Atayal": {
-        this.clientGroup = "泰雅";
-        break;
-      }
-      case "Bunun": {
-        this.clientGroup = "布農";
-        break;
-      }
-      case "Kanakanavu": {
-        this.clientGroup = "卡那卡那富 ";
-        break;
-      }
-      case "Kavalan": {
-        this.clientGroup = "噶瑪蘭 ";
-        break;
-      }
-      case "Paiwan": {
-        this.clientGroup = " 排灣";
-        break;
-      }
-      case "Rukai": {
-        this.clientGroup = "魯凱 ";
-        break;
-      }
-      case "Saaroa": {
-        this.clientGroup = "撒阿魯哇";
-        break;
-      }
-      case "Saisiyat": {
-        this.clientGroup = "賽夏";
-        break;
-      }
-      case "Sakizaya": {
-        this.clientGroup = "撒奇萊雅";
-        break;
-      }
-      case "Seediq": {
-        this.clientGroup = "賽德克";
-        break;
-      }
-      case "Taroku": {
-        this.clientGroup = "太魯閣";
-        break;
-      }
-      case "Thao": {
-        this.clientGroup = "邵";
-        break;
-      }
-      case "Tsou": {
-        this.clientGroup = "鄒";
-        break;
-      }
-      case "Yami": {
-        this.clientGroup = "雅美";
-        break;
-      }
-      default:
-        break;
+    if (this.client.group) {
+      this.clientGroup = this.client.group;
     }
-
     this.clientBirthday = this.client.birthday;
     if (this.client.sex) {
-      this.clientSex = this.client.sex === "male" ? "男" : "女";
+      this.clientSex = this.client.sex;
     }
     this.clientIDN = this.client.IDN;
     this.clientMobile = this.client.mobile;
