@@ -1059,7 +1059,6 @@ export default {
   async mounted() {
     this.clientId = this.$store.state.route.params.clientId;
     this.client = (await ClientsService.get(this.clientId)).data;
-    console.log("user", this.$store.state.user.email);
   },
   computed: {
     age: function() {

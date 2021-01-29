@@ -311,7 +311,8 @@
                       <option value="Kanakanavu">卡那卡那富 </option>
                       <option value="Kavalan">噶瑪蘭 </option>
                       <option value="Paiwan"> 排灣</option>
-                      <option value="Rukai">魯凱 </option>
+                      <option value="Puyuma"> 卑南</option>
+                      <option value="Rukai">魯凱</option>
                       <option value="Saaroa"> 撒阿魯哇</option>
                       <option value="Saisiyat"> 賽夏</option>
                       <option value="Sakizaya"> 撒奇萊雅</option>

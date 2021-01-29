@@ -374,8 +374,14 @@
                   class="px-4 py-3 bg-gradient-to-r from-blue-100 to-red-100 text-right sm:px-6 "
                 >
                   <button
+                    @click="print"
+                    class="mx-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                  >
+                    列印
+                  </button>
+                  <button
                     @click="edit"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="mx-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     編輯
                   </button>
@@ -386,6 +392,12 @@
         </div>
       </div>
     </panel>
+    <PrintCase
+      :childPrint="childPrint"
+      :case_="case__"
+      :client="client"
+      v-show="false"
+    />
   </div>
 </template>
 
@@ -393,10 +405,12 @@
 import CaseService from "../../services/CaseService";
 import ClientsService from "../../services/ClientsService";
 import Panel from "../../components/Panel";
+import PrintCase from "./PrintCase";
 export default {
   name: "ViewCase",
   components: {
     Panel,
+    PrintCase,
   },
   data() {
     return {
@@ -426,11 +440,15 @@ export default {
       clientAddr: "",
       error: null,
       clientId: null,
+      childPrint: 1,
     };
   },
   methods: {
     edit() {
       this.$router.push(`/case/${this.caseId}/edit`);
+    },
+    print() {
+      this.childPrint++;
     },
   },
   computed: {
@@ -444,10 +462,7 @@ export default {
   async mounted() {
     this.caseId = this.$store.state.route.params.caseId;
     this.case__ = (await CaseService.get(this.caseId)).data;
-    console.log("case", this.case__);
-    console.log(this.case__.ClientId);
     this.client = (await ClientsService.get(this.case__.ClientId)).data;
-    console.log("client:", this.client);
     if (this.client.plainMountain) {
       this.clientPlain =
         this.client.plainMountain === "plain" ? "平原" : "山原";
@@ -476,6 +491,10 @@ export default {
       }
       case "Paiwan": {
         this.clientGroup = " 排灣";
+        break;
+      }
+      case "Puyuma": {
+        this.clientGroup = "卑南";
         break;
       }
       case "Rukai": {
@@ -526,8 +545,15 @@ export default {
     this.clientMobile = this.client.mobile;
     this.clientPhone = this.client.phone;
     this.clientAddr =
-      this.client.city + this.client.dist + this.client.vill + this.client.addr;
+      Strings.orEmpty(this.client.city) +
+      Strings.orEmpty(this.client.dist) +
+      Strings.orEmpty(this.client.vill) +
+      Strings.orEmpty(this.client.addr);
   },
+};
+const Strings = {};
+Strings.orEmpty = function(entity) {
+  return entity || "";
 };
 </script>
 

@@ -4,7 +4,7 @@
       <div
         v-for="contact in client.Contacts"
         :key="contact.id"
-        :class="{ 'line-through': isSuccess === false }"
+        :class="{ 'text-red-500': contact.isSuccess === false }"
         class="grid grid-cols-12 gap-y-2"
       >
         <div class="col-span-1 sm:col-span-1">

@@ -41,8 +41,6 @@ export default {
   },
   mounted() {
     this.getList();
-    console.log(this.list);
-    console.log(this.itemList);
   },
   methods: {
     resetSelection() {
@@ -54,7 +52,6 @@ export default {
       this.selectedItem = theItem;
       this.inputValue = "";
       this.$emit("on-item-selected", theItem);
-      console.log(theItem);
     },
     itemVisible(item) {
       let currentName = item.name;

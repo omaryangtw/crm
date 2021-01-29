@@ -29,7 +29,7 @@ export default {
     };
   },
   watch: {
-    search: _.debounce(async function(value) {
+    search: _.debounce(async function() {
       const route = {};
       if (this.search !== "") {
         route.query = {
@@ -37,7 +37,6 @@ export default {
         };
       }
       this.$router.push(route);
-      console.log(value);
     }, 500),
 
     "$route.query.search": {

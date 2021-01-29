@@ -209,6 +209,10 @@ export default {
           clientGroup = " 排灣";
           break;
         }
+        case "Puyuma": {
+          clientGroup = " 卑南";
+          break;
+        }
         case "Rukai": {
           clientGroup = "魯凱 ";
           break;

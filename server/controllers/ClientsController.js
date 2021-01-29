@@ -37,6 +37,8 @@ module.exports = {
       let clients = null;
       clients = await Client.findAll({
         attributes: [
+          "id",
+          "sex",
           "name",
           "plainMountain",
           "group",
