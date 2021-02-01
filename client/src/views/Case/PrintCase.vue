@@ -245,6 +245,7 @@ Strings.orEmpty = function(entity) {
   width: 80%;
   min-height: 300px;
   border: 1px solid black;
+  white-space: pre-line;
   display: flex;
   padding: 5px;
   text-align: start;

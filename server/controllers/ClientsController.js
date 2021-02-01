@@ -39,6 +39,7 @@ module.exports = {
         attributes: [
           "id",
           "birthMonth",
+          "age",
           "sex",
           "name",
           "plainMountain",
