@@ -8,6 +8,9 @@ export default {
       },
     });
   },
+  byClient(ClientId) {
+    return api().get(`case/by-client/${ClientId}`);
+  },
   create(case_) {
     return api().post("case", case_);
   },

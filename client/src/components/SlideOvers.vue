@@ -78,7 +78,7 @@
                 案件紀錄
               </h2>
             </div>
-            <div v-for="case_ in caseByClient" :key="case_.id">
+            <div v-for="case_ in cases" :key="case_.id">
               <item-card
                 :caseId="case_.id"
                 :note="case_.note"
@@ -114,14 +114,9 @@ export default {
       this.$emit("closePanel");
     },
   },
-  async mounted() {
-    this.cases = (await CaseService.index()).data;
-  },
-  computed: {
-    caseByClient() {
-      return this.cases.filter(
-        (case_) => case_.ClientId === parseInt(this.clientId)
-      );
+  watch: {
+    slideOverSwitch: async function() {
+      this.cases = (await CaseService.byClient(this.clientId)).data;
     },
   },
 };
