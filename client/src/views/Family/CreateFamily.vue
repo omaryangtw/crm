@@ -27,7 +27,7 @@
         <div>
           <DropdownList
             :list="clients"
-            @on-item-selected="setTargetId"
+            @on-item-selected="setTarget"
             @on-item-reset="dropdownSelection = {}"
           />
         </div>
@@ -60,6 +60,7 @@ export default {
       relationship: null,
       dropdownSelection: {},
       clients: null,
+      target: null,
       targetInfo: {
         sex: null,
         age: null,
@@ -92,11 +93,6 @@ export default {
       ],
     };
   },
-  props: {
-    target: {
-      type: Object,
-    },
-  },
   methods: {
     async create() {
       try {
@@ -117,9 +113,9 @@ export default {
     setRelation(relation) {
       this.relationship = relation.name;
     },
-    setTargetId(client) {
-      console.log(client);
-      this.targetId = client.id;
+    setTarget(client) {
+      this.target = client;
+      this.targetId = this.target.id;
     },
     closeModal() {
       this.$emit("close-modal");
@@ -128,33 +124,47 @@ export default {
   async mounted() {
     try {
       this.sourceId = parseInt(this.$route.params.clientId);
-      this.clients = (await ClientsService.index()).data;
-      await console.log(this.clients);
+      this.clients = (await ClientsService.indexAll()).data;
     } catch (err) {
       console.log(err);
     }
   },
   watch: {
-    targetId: function() {
+    target: function() {
       this.targetInfo.sex =
-        this.clients[this.targetId - 1].sex === "male" ? "男" : "女";
-      if (this.clients[this.targetId - 1].birthday) {
+        this.clients.find((client) => client.id === this.target.id).sex ===
+        "male"
+          ? "男"
+          : "女";
+      if (
+        this.clients.find((client) => client.id === this.target.id).birthday
+      ) {
         this.targetInfo.age =
           " / " +
           (
             parseInt(new Date().toISOString().slice(0, 4)) -
-            parseInt(this.clients[this.targetId - 1].birthday)
+            parseInt(
+              this.clients.find((client) => client.id === this.target.id)
+                .birthday
+            )
           ).toString() +
           "歲";
       }
-      if (this.targetInfo.dist !== "") {
-        this.targetInfo.dist = " / " + this.clients[this.targetId - 1].dist;
+      if (this.target.dist) {
+        this.targetInfo.dist =
+          " / " +
+          this.clients.find((client) => client.id === this.target.id).dist;
       }
-      if (this.targetInfo.vill !== "") {
-        this.targetInfo.vill = " / " + this.clients[this.targetId - 1].vill;
+      if (this.target.vill) {
+        this.targetInfo.vill =
+          " / " +
+          this.clients.find((client) => client.id === this.target.id).vill;
       }
       this.targetInfoString =
-        this.targetInfo.sex + this.targetInfo.age + this.targetInfo.vill;
+        this.targetInfo.sex +
+        this.targetInfo.age +
+        this.targetInfo.dist +
+        this.targetInfo.vill;
     },
   },
 };

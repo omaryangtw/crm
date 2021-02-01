@@ -86,7 +86,7 @@
                       >
                       <select
                         id="status"
-                        disabled
+                        v-model="case__.status"
                         name="status"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg font-semibold"
                       >
@@ -379,6 +379,7 @@ export default {
     return {
       case__: {
         name: "",
+        status: "處理中",
         personInCharge: null,
         typesMajor: null,
         typesMinor: null,
@@ -454,6 +455,7 @@ export default {
     },
     setClientId(client) {
       this.client = client;
+      this.clientId = client.id;
     },
   },
   watch: {
@@ -468,10 +470,10 @@ export default {
       this.clientMobile = this.client.mobile;
       this.clientPhone = this.client.phone;
       this.clientAddr =
-        this.client.city +
-        this.client.dist +
-        this.client.vill +
-        this.client.addr;
+        Strings.orEmpty(this.client.city) +
+        Strings.orEmpty(this.client.dist) +
+        Strings.orEmpty(this.client.vill) +
+        Strings.orEmpty(this.client.addr);
     },
   },
   async mounted() {
@@ -481,6 +483,10 @@ export default {
       console.log(err);
     }
   },
+};
+const Strings = {};
+Strings.orEmpty = function(entity) {
+  return entity || "";
 };
 </script>
 
