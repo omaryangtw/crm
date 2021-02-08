@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Register from "../views/Register.vue";
 import Login from "../views/Login.vue";
 import Clients from "../views/Client/Clients";
+import Birthday from "../views/Client/Birthday";
 import CreateClient from "../views/Client/CreateClient";
 import ViewClient from "../views/Client/ViewClient";
 import EditClient from "../views/Client/EditClient";
@@ -38,6 +39,11 @@ const routes = [
         next({ name: "Login" });
       }
     },
+  },
+  {
+    path: "/birthday",
+    name: "Birthday",
+    component: Birthday,
   },
   {
     path: "/clients/:clientId",

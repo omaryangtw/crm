@@ -12,5 +12,6 @@ router.put("/:caseId", (req, res) => {
 router.get("/:caseId", (req, res) => {
   CaseController.display(req, res);
 });
+router.delete("/:caseId", CaseController.delete);
 
 module.exports = router;

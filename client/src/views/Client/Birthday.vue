@@ -2,8 +2,21 @@
   <div class="bg-gray-200">
     <div class="m-auto sm:mt-0 container ">
       <div class="md:grid md:grid-cols-6 md:gap-6">
-        <div class="md:col-span-1 flex">
-          <Search />
+        <div class="md:col-span-1">
+          <label
+            for="month"
+            class="block text-lg sm:text-xl font-semibold text-gray-700"
+            >月份</label
+          >
+          <input
+            type="number"
+            name="month"
+            id="month"
+            min="1"
+            max="12"
+            v-model="month"
+            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-xl border-gray-300 rounded-md"
+          />
         </div>
         <div class="md:col-span-5">
           <panel title="族人列表">
@@ -156,31 +169,30 @@
 <script>
 import ClientsServices from "../../services/ClientsService.js";
 import Panel from "../../components/Panel.vue";
-import Search from "../Search";
 export default {
-  name: "clients",
-  components: { Panel, Search },
+  name: "Birthday",
+  components: { Panel },
   meta: {
     needLogin: true,
   },
   data() {
     return {
+      allClients: null,
       clients: null,
-      search: "",
+      month: "1",
     };
   },
   watch: {
-    "$route.query.search": {
+    month: {
       immediate: true,
-      async handler(value) {
-        this.clients = (await ClientsServices.index(value)).data;
+      async handler() {
+        this.clients = (await ClientsServices.indexAll()).data;
+        this.clients = this.clients
+          .filter(
+            (client) => parseInt(client.birthMonth) === parseInt(this.month)
+          )
+          .sort((a, b) => a.birthday.slice(8, 10) - b.birthday.slice(8, 10));
       },
-    },
-  },
-  computed: {},
-  methods: {
-    edit(clientId) {
-      this.$router.push(`/clients/${clientId}/edit`);
     },
   },
 };

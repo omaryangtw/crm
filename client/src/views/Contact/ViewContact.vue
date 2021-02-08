@@ -19,7 +19,7 @@
           {{ $filters.dateFormate(contact.date) }}
         </div>
         <div class="col-span-2 sm:col-span-2">
-          {{ contact.contactType }}
+          {{ contact.contactType }} / {{ contact.personInCharge }}
         </div>
         <div class="col-span-6 sm:col-span-6">
           {{ contact.record }}
