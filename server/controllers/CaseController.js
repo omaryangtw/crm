@@ -23,7 +23,7 @@ module.exports = {
           ],
         });
       } else {
-        cases = await Case.findAll({ where: { status: "處理中" } });
+        cases = await Case.findAll(/* { where: { status: "處理中" } } */);
       }
 
       res.send(cases);
@@ -70,6 +70,19 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "an error occured trying to fetch cases",
+      });
+    }
+  },
+  async delete(req, res) {
+    try {
+      const case_ = await Case.findOne({
+        where: { id: req.params.caseId },
+      });
+      case_.destroy();
+      res.send(req.params.caseId);
+    } catch {
+      res.status(500).send({
+        error: "an error occured trying to delete a case",
       });
     }
   },

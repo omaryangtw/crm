@@ -68,6 +68,11 @@
                 >
                 <router-link
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-bold"
+                  :to="{ name: 'Birthday' }"
+                  >生日</router-link
+                >
+                <router-link
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-bold"
                   :to="{ name: 'CreateClient' }"
                   >新增族人</router-link
                 >

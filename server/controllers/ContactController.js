@@ -1,5 +1,5 @@
-const { Contact, Client } = require("../models");
-const { or, like } = require("sequelize").Op;
+const { Contact, Client, sequelize } = require("../models");
+const { or, like, gte } = require("sequelize").Op;
 module.exports = {
   async index(req, res) {
     try {
@@ -66,25 +66,23 @@ module.exports = {
   },
   async get(req, res) {
     try {
-      await Client.findAll({
-        where: {},
-        include: [{ model: Contact }],
-        attributes: [],
-      }).then((clients) => {
-        var records = [];
-        /*         client.forEach((contact) => {
-          records = records.concat(contact);
-        }); */
-        clients.forEach((client) => {
-          client.Contacts.forEach(
-            (record) => (records = records.concat(record))
-          );
-        });
-        res.send(records);
+      const records = await Contact.findAll({
+        /*   where: {
+          date: {
+            [gte]: new Date() - 7 * 86400 * 1000,
+          },
+        },
+        attributes: [
+          ["personInCharge", "夥伴"],
+          [sequelize.fn("count", sequelize.col("personInCharge")), "數量"],
+        ],
+        order: [["date", "DESC"]],
+        group: ["personInCharge"], */
       });
+      res.send(records);
     } catch (err) {
       res.status(500).send({
-        error: "an error occured trying to delete a contact record",
+        error: "an error occured trying to get records",
       });
     }
   },

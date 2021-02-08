@@ -10,7 +10,18 @@ module.exports = {
         clients = await Client.findAll({
           limit: 8,
           where: {
-            [or]: ["name", "mobile", "mobileAlt"].map((key) => ({
+            [or]: [
+              "name",
+              "mobile",
+              "mobileAlt",
+              "mobileNote",
+              "mobileAltNote",
+              "addr",
+              "addrAlt",
+              "addrNote",
+              "addrAltNote",
+              "note",
+            ].map((key) => ({
               [key]: {
                 [like]: `%${search}%`,
               },
@@ -227,6 +238,19 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "an error occured trying to fetch clients",
+      });
+    }
+  },
+  async delete(req, res) {
+    try {
+      const client = await Client.findOne({
+        where: { id: req.params.clientId },
+      });
+      client.destroy();
+      res.send(req.params.clientId);
+    } catch {
+      res.status(500).send({
+        error: "an error occured trying to delete a client",
       });
     }
   },

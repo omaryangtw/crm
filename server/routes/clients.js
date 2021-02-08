@@ -16,5 +16,6 @@ router.put("/:clientId", (req, res) => {
 router.get("/:clientId", (req, res) => {
   ClientsController.display(req, res);
 });
+router.delete("/:clientId", ClientsController.delete);
 
 module.exports = router;
