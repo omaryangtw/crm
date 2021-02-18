@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-200 min-h-screen">
-    <div class="m-auto sm:mt-0 pt-10 container ">
+    <div class="m-auto sm:mt-0 pt-10 container">
       <div class="md:grid md:grid-cols-6 md:gap-6">
         <div class="md:col-span-1">
           <SearchCase />
@@ -13,7 +13,8 @@
                   class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
                 >
                   <div
-                    class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+                    class="shadow overflow-auto border-b border-gray-200 sm:rounded-lg"
+                    style="height: 40rem"
                   >
                     <table class="min-w-full divide-y divide-gray-200">
                       <thead class="bg-gray-50">
@@ -66,9 +67,9 @@
                               </div>
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-1 whitespace-nowrap">
                             <span
-                              class="px-4  inline-flex text-md leading-5 font-semibold rounded-full "
+                              class="px-4 inline-flex text-md leading-5 font-semibold rounded-full"
                               :class="{
                                 'bg-green-100': case__.status === '結案',
                                 'text-green-800': case__.status === '結案',
@@ -79,7 +80,7 @@
                               {{ case__.status }}
                             </span>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-1 whitespace-nowrap">
                             <div class="text-md text-gray-900">
                               {{ case__.typesMajor }}
                             </div>
@@ -87,14 +88,14 @@
                               {{ case__.typesMinor }}
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-1 whitespace-nowrap">
                             <span class="text-md text-gray-500">
                               {{ case__.personInCharge }}
                             </span>
                           </td>
 
                           <td
-                            class="px-6 py-4 whitespace-nowrap text-right text-md font-medium"
+                            class="px-6 py-1 whitespace-nowrap text-right text-md font-medium"
                           >
                             <button
                               class="text-indigo-600 hover:text-indigo-900"

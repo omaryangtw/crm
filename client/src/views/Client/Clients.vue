@@ -1,8 +1,8 @@
 <template>
   <div class="bg-gray-200">
-    <div class="m-auto sm:mt-0 container ">
+    <div class="m-auto sm:mt-0 container">
       <div class="md:grid md:grid-cols-6 md:gap-6">
-        <div class="md:col-span-1 flex">
+        <div class="md:col-span-1">
           <Search />
         </div>
         <div class="md:col-span-5">
@@ -62,7 +62,7 @@
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
                         <tr v-for="client in clients" :key="client.id">
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-2 whitespace-nowrap">
                             <div class="flex items-center">
                               <div class="ml-4">
                                 <div
@@ -87,7 +87,7 @@
                               </div>
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-2 whitespace-nowrap">
                             <div class="text-md text-gray-900">
                               {{ client.group }}
                             </div>
@@ -95,12 +95,12 @@
                               {{ client.plainMountain }}
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-2 whitespace-nowrap">
                             <span class="text-md text-gray-500">
                               {{ client.birthday }}
                             </span>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-2 whitespace-nowrap">
                             <div class="text-md text-gray-900">
                               {{ client.mobile }}
                             </div>
@@ -108,7 +108,7 @@
                               {{ client.mobileAlt }}
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-2 whitespace-nowrap">
                             <div class="text-md text-gray-900">
                               {{ client.phone }}
                             </div>
@@ -116,7 +116,7 @@
                               {{ client.phoneAlt }}
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
+                          <td class="px-6 py-2 whitespace-nowrap">
                             <div class="text-md text-gray-900">
                               {{ client.city }}{{ client.dist }}{{ client.vill
                               }}{{ client.addr }}
@@ -128,7 +128,7 @@
                           </td>
 
                           <td
-                            class="px-6 py-4 whitespace-nowrap text-right text-md font-medium"
+                            class="px-6 py-2 whitespace-nowrap text-right text-md font-medium"
                           >
                             <button
                               @click="edit(client.id)"

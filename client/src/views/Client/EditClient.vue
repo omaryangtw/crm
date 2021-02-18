@@ -245,7 +245,7 @@
                     </div>
                   </div>
 
-                  <div class="col-span-4 sm:col-span-4 ">
+                  <div class="col-span-4 sm:col-span-4">
                     <label
                       for="birthday"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -255,7 +255,7 @@
                       @change="calculate()"
                       type="date"
                       id="birthday"
-                      class="block text-lg sm:text-xl font-medium text-gray-700 w-11/12 "
+                      class="block text-lg sm:text-xl font-medium text-gray-700 w-11/12"
                       v-model="client.birthday"
                     />
                   </div>
@@ -302,18 +302,19 @@
                       <option value="阿美">阿美</option>
                       <option value="泰雅">泰雅</option>
                       <option value="布農">布農</option>
-                      <option value="卡那卡那富">卡那卡那富 </option>
-                      <option value="噶瑪蘭">噶瑪蘭 </option>
-                      <option value="排灣"> 排灣</option>
-                      <option value="魯凱">魯凱 </option>
-                      <option value="撒阿魯哇"> 撒阿魯哇</option>
-                      <option value="賽夏"> 賽夏</option>
-                      <option value="撒奇萊雅"> 撒奇萊雅</option>
-                      <option value="賽德克"> 賽德克</option>
-                      <option value="太魯閣"> 太魯閣</option>
-                      <option value="邵"> 邵</option>
-                      <option value="鄒"> 鄒</option>
-                      <option value="雅美"> 雅美</option>
+                      <option value="卡那卡那富">卡那卡那富</option>
+                      <option value="噶瑪蘭">噶瑪蘭</option>
+                      <option value="排灣">排灣</option>
+                      <option value="魯凱">魯凱</option>
+                      <option value="卑南">卑南</option>
+                      <option value="撒阿魯哇">撒阿魯哇</option>
+                      <option value="賽夏">賽夏</option>
+                      <option value="撒奇萊雅">撒奇萊雅</option>
+                      <option value="賽德克">賽德克</option>
+                      <option value="太魯閣">太魯閣</option>
+                      <option value="邵">邵</option>
+                      <option value="鄒">鄒</option>
+                      <option value="雅美">雅美</option>
                     </select>
                   </div>
                   <div class="col-span-3 sm:col-span-3">

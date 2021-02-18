@@ -10,7 +10,7 @@
         <div class="col-span-1 sm:col-span-1">
           <button
             @click="remove(contact)"
-            class="inline-flex justify-center w-8 h-8  shadow-sm text-lg font-bold rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mx-4"
+            class="inline-flex justify-center w-8 h-8 shadow-sm text-lg font-bold rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mx-4"
           >
             x
           </button>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import ContactService from "../../services/ConstactService";
+import ContactService from "../../services/ContactService";
 
 export default {
   name: "ViewContact",

@@ -3,11 +3,11 @@
     <panel>
       <!-- This example requires Tailwind CSS v2.0+ -->
       <div
-        class="fixed z-10 inset-0 overflow-y-auto "
+        class="fixed z-10 inset-0 overflow-y-auto"
         v-if="nameFilledUponSubmit"
       >
         <div
-          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+          class="flex items-end justify-center min-h-screen px-4 text-center sm:block sm:p-0"
         >
           <!--
       Background overlay, show/hide based on modal state.
@@ -45,7 +45,7 @@
             aria-modal="true"
             aria-labelledby="modal-headline"
           >
-            <div class="bg-white px-4 pt-5  sm:p-6 sm:pb-4">
+            <div class="bg-white px-4 pt-5 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div
                   class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
@@ -96,7 +96,7 @@
       </div>
       <div class="m-auto sm:mt-0 container">
         <div class="md:grid md:grid-cols-3 md:gap-6">
-          <div class="col-span-3 lg:col-span-1 ">
+          <div class="col-span-3 lg:col-span-1">
             <div class="px-4 sm:px-0 pt-8">
               <h3 class="text-3xl font-semibold leading-6 text-gray-900 ml-24">
                 新增族人資料
@@ -106,7 +106,7 @@
                   class="px-4 py-5 bg-gradient-to-r from-blue-100 to-red-50 sm:p-6"
                 >
                   <div class="grid grid-cols-12 gap-6">
-                    <div class=" col-span-12 xl:col-span-6 xl:col-start-6">
+                    <div class="col-span-12 xl:col-span-6 xl:col-start-6">
                       <label
                         for="isDead"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -195,7 +195,7 @@
                       />
                       <label
                         for="canCall"
-                        class=" m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
+                        class="m-0 sm:ml-3 text-lg sm:text-xl font-semibold text-gray-700"
                       >
                         可
                       </label>
@@ -266,7 +266,7 @@
               </div>
             </div>
           </div>
-          <div class="mt-5 md:mt-0 col-span-3 lg:col-span-2 ">
+          <div class="mt-5 md:mt-0 col-span-3 lg:col-span-2">
             <div class="shadow overflow-hidden sm:rounded-md">
               <div
                 class="px-4 py-5 bg-gradient-to-r from-blue-100 to-red-50 sm:p-6"
@@ -344,7 +344,7 @@
                     </div>
                   </div>
 
-                  <div class="col-span-6 lg:col-span-4 ">
+                  <div class="col-span-6 lg:col-span-4">
                     <label
                       for="birthday"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -354,7 +354,7 @@
                       @change="calculate()"
                       type="date"
                       id="birthday"
-                      class="block text-lg sm:text-xl font-medium text-gray-700 w-11/12 "
+                      class="block text-lg sm:text-xl font-medium text-gray-700 w-11/12"
                       v-model="client.birthday"
                     />
                   </div>
@@ -401,18 +401,19 @@
                       <option value="阿美">阿美</option>
                       <option value="泰雅">泰雅</option>
                       <option value="布農">布農</option>
-                      <option value="卡那卡那富">卡那卡那富 </option>
-                      <option value="噶瑪蘭">噶瑪蘭 </option>
-                      <option value="排灣"> 排灣</option>
-                      <option value="魯凱">魯凱 </option>
-                      <option value="撒阿魯哇"> 撒阿魯哇</option>
-                      <option value="賽夏"> 賽夏</option>
-                      <option value="撒奇萊雅"> 撒奇萊雅</option>
-                      <option value="賽德克"> 賽德克</option>
-                      <option value="太魯閣"> 太魯閣</option>
-                      <option value="邵"> 邵</option>
-                      <option value="鄒"> 鄒</option>
-                      <option value="雅美"> 雅美</option>
+                      <option value="卡那卡那富">卡那卡那富</option>
+                      <option value="噶瑪蘭">噶瑪蘭</option>
+                      <option value="排灣">排灣</option>
+                      <option value="魯凱">魯凱</option>
+                      <option value="卑南">卑南</option>
+                      <option value="撒阿魯哇">撒阿魯哇</option>
+                      <option value="賽夏">賽夏</option>
+                      <option value="撒奇萊雅">撒奇萊雅</option>
+                      <option value="賽德克">賽德克</option>
+                      <option value="太魯閣">太魯閣</option>
+                      <option value="邵">邵</option>
+                      <option value="鄒">鄒</option>
+                      <option value="雅美">雅美</option>
                     </select>
                   </div>
                   <div class="col-span-6 lg:col-span-3">

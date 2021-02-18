@@ -46,9 +46,7 @@
       </div>
     </div>
 
-    <button type="button" @click="print">
-      Print Form
-    </button>
+    <button type="button" @click="print">Print Form</button>
   </div>
 </template>
 
@@ -92,10 +90,10 @@ export default {
     },
   },
   watch: {
-    childPrint: function() {
+    childPrint: function () {
       this.print();
     },
-    client: function() {
+    client: function () {
       if (this.client.plainMountain) {
         this.clientPlain =
           this.client.plainMountain === "plain" ? "平原" : "山原";
@@ -103,75 +101,7 @@ export default {
       this.caseId = this.case_.id;
       this.caseName = this.case_.name.split("/")[0];
       this.caseDate = this.case_.name.split("/")[1];
-      switch (this.client.group) {
-        case "Amis": {
-          this.clientGroup = "阿美";
-          break;
-        }
-        case "Atayal": {
-          this.clientGroup = "泰雅";
-          break;
-        }
-        case "Bunun": {
-          this.clientGroup = "布農";
-          break;
-        }
-        case "Kanakanavu": {
-          this.clientGroup = "卡那卡那富 ";
-          break;
-        }
-        case "Kavalan": {
-          this.clientGroup = "噶瑪蘭 ";
-          break;
-        }
-        case "Paiwan": {
-          this.clientGroup = " 排灣";
-          break;
-        }
-        case "Puyuma": {
-          this.clientGroup = " 卑南";
-          break;
-        }
-        case "Rukai": {
-          this.clientGroup = "魯凱 ";
-          break;
-        }
-        case "Saaroa": {
-          this.clientGroup = "撒阿魯哇";
-          break;
-        }
-        case "Saisiyat": {
-          this.clientGroup = "賽夏";
-          break;
-        }
-        case "Sakizaya": {
-          this.clientGroup = "撒奇萊雅";
-          break;
-        }
-        case "Seediq": {
-          this.clientGroup = "賽德克";
-          break;
-        }
-        case "Taroku": {
-          this.clientGroup = "太魯閣";
-          break;
-        }
-        case "Thao": {
-          this.clientGroup = "邵";
-          break;
-        }
-        case "Tsou": {
-          this.clientGroup = "鄒";
-          break;
-        }
-        case "Yami": {
-          this.clientGroup = "雅美";
-          break;
-        }
-        default:
-          break;
-      }
-
+      this.clientGroup = this.client.group;
       this.clientBirthday = this.client.birthday;
       if (this.client.sex) {
         this.clientSex = this.client.sex === "male" ? "男" : "女";
@@ -193,7 +123,7 @@ export default {
   },
 };
 const Strings = {};
-Strings.orEmpty = function(entity) {
+Strings.orEmpty = function (entity) {
   return entity || "";
 };
 </script>
