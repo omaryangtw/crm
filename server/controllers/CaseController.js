@@ -10,7 +10,7 @@ module.exports = {
         console.log("search string = ", search);
         cases = await Case.findAll({
           where: {
-            [or]: ["name"].map((key) => ({
+            [or]: ["name",'note','handle'].map((key) => ({
               [key]: {
                 [like]: `%${search}%`,
               },
@@ -70,6 +70,21 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "an error occured trying to fetch cases",
+      });
+    }
+  },
+  async getByClient(req, res) {
+    try {
+      const client = await Client.findOne({
+        where: { id: req.params.clientId },
+        include: [
+          { model: Case }, 
+        ],
+      });
+      res.send(client);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
       });
     }
   },

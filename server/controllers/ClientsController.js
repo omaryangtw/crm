@@ -8,7 +8,6 @@ module.exports = {
       console.log(req.query);
       if (search) {
         clients = await Client.findAll({
-          limit: 8,
           where: {
             [or]: [
               "name",
@@ -16,6 +15,14 @@ module.exports = {
               "mobileAlt",
               "mobileNote",
               "mobileAltNote",
+              'phone',
+              'phoneAlt',
+              'phoneNote',
+              'phoneAltNote',
+              'dist',
+              'distAlt',
+              'vill',
+              'villAlt',
               "addr",
               "addrAlt",
               "addrNote",
