@@ -63,6 +63,11 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <router-link
                   class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-bold"
+                  :to="{ name: 'Home' }"
+                  >首頁</router-link
+                >
+                <router-link
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-2xl font-bold"
                   :to="{ name: 'Clients' }"
                   >族人</router-link
                 >
