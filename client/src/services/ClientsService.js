@@ -20,4 +20,7 @@ export default {
   indexAll() {
     return api().get("clients/all");
   },
+  remove(id){
+    return api().delete(`clients/${id}`)
+  }
 };

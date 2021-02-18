@@ -20,4 +20,7 @@ export default {
   get(id) {
     return api().get(`case/${id}`);
   },
+  remove(id){
+    return api().delete(`case/${id}`);
+  }
 };

@@ -6,12 +6,9 @@
       @closePanel="closePanel"
     />
     <panel>
-      <div
-        class="fixed z-10 inset-0 overflow-y-auto "
-        v-if="modalContactCreate"
-      >
+      <div class="fixed z-10 inset-0 overflow-y-auto" v-if="modalContactCreate">
         <div
-          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+          class="flex items-end justify-center min-h-screen px-4 text-center sm:block sm:p-0"
         >
           <!--
       Background overlay, show/hide based on modal state.
@@ -81,9 +78,9 @@
           </div>
         </div>
       </div>
-      <div class="fixed z-10 inset-0 overflow-y-auto " v-if="modalContact">
+      <div class="fixed z-10 inset-0 overflow-y-auto" v-if="modalContact">
         <div
-          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+          class="flex items-end justify-center min-h-screen px-4 text-center sm:block sm:p-0"
         >
           <!--
       Background overlay, show/hide based on modal state.
@@ -153,9 +150,9 @@
           </div>
         </div>
       </div>
-      <div class="fixed z-10 inset-0 overflow-y-auto " v-if="modalFamily">
+      <div class="fixed z-10 inset-0 overflow-y-auto" v-if="modalFamily">
         <div
-          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+          class="flex items-end justify-center min-h-screen px-4 text-center sm:block sm:p-0"
         >
           <!--
       Background overlay, show/hide based on modal state.
@@ -225,9 +222,9 @@
           </div>
         </div>
       </div>
-      <div class="fixed z-10 inset-0 overflow-y-auto " v-if="modalFamilyCreate">
+      <div class="fixed z-10 inset-0 overflow-y-auto" v-if="modalFamilyCreate">
         <div
-          class="flex items-end justify-center  min-h-screen px-4 text-center sm:block sm:p-0"
+          class="flex items-end justify-center min-h-screen px-4 text-center sm:block sm:p-0"
         >
           <!--
       Background overlay, show/hide based on modal state.
@@ -301,16 +298,25 @@
       <div class="absolute right-8 flex flex-col m-2">
         <button
           @click="slideOverSwitch = true"
-          class=" top-96 right-8 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          class="top-96 right-8 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          案件紀錄
+          <span class="mr-2">案件紀錄</span>
+
+          <span
+            v-if="hasCases"
+            class="absolute -left-1 -top-1 w-4 h-4 mr-2 bg-red-600 rounded-full"
+          ></span>
         </button>
         <div class="flex mt-10">
           <button
             @click="modalFamily = true"
-            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            class="relative inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
-            家人名單
+            <span class="mr-2">家人名單</span>
+            <span
+              v-if="hasFamilies"
+              class="absolute -left-1 -top-1 w-4 h-4 mr-2 bg-red-600 rounded-full"
+            ></span>
           </button>
           <button
             @click="modalFamilyCreate = true"
@@ -322,9 +328,13 @@
         <div class="mt-10">
           <button
             @click="modalContact = true"
-            class="inline-flex justify-start py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+            class="relative inline-flex justify-start py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
           >
-            通聯記錄
+            <span class="mr-2">通聯記錄</span>
+            <span
+              v-if="hasContacts"
+              class="absolute -left-1 -top-1 w-4 h-4 mr-2 bg-red-600 rounded-full"
+            ></span>
           </button>
           <button
             @click="modalContactCreate = true"
@@ -346,7 +356,11 @@
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     aria-hidden="true"
                     focusable="false"
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    style="
+                      -ms-transform: rotate(360deg);
+                      -webkit-transform: rotate(360deg);
+                      transform: rotate(360deg);
+                    "
                     class="h-10 w-10 mr-2"
                     preserveAspectRatio="xMidYMid meet"
                     viewBox="0 0 24 24"
@@ -364,7 +378,11 @@
                     aria-hidden="true"
                     focusable="false"
                     class="h-10 w-10 mr-2"
-                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                    style="
+                      -ms-transform: rotate(360deg);
+                      -webkit-transform: rotate(360deg);
+                      transform: rotate(360deg);
+                    "
                     preserveAspectRatio="xMidYMid meet"
                     viewBox="0 0 24 24"
                   >
@@ -376,7 +394,7 @@
                 </div>
                 <div>
                   <h3
-                    class="text-4xl font-semibold leading-6 "
+                    class="text-4xl font-semibold leading-6"
                     :class="{ 'text-red-600': client.isDead }"
                   >
                     {{ client.name }}
@@ -487,7 +505,7 @@
                         不可
                       </label>
                     </div>
-                    <div class="col-span-12 ">
+                    <div class="col-span-12">
                       <label
                         for="canMail"
                         class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -535,6 +553,7 @@
                     編輯
                   </button>
                   <button
+                    @click="remove"
                     class="ml-10 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg sm:text-xl font-semibold rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     刪除
@@ -547,7 +566,7 @@
             <div class="shadow overflow-hidden sm:rounded-md">
               <div class="px-4 py-5 bg-gray-200 sm:p-6">
                 <div class="grid grid-cols-12 gap-x-6 gap-y-1">
-                  <div class="col-span-4 sm:col-span-4 ">
+                  <div class="col-span-4 sm:col-span-4">
                     <label
                       for="birthday"
                       class="block text-lg sm:text-xl font-semibold text-gray-700"
@@ -624,7 +643,7 @@
                       id="plainMountain"
                       name="plainMountain"
                       v-model="client.plainMountain"
-                      class="mt-1 block w-full py-2 px-3 border  bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl "
+                      class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg sm:text-xl"
                     >
                       <option value="平原">平原</option>
                       <option value="山原">山原</option>
@@ -1001,11 +1020,22 @@ export default {
       modalContactCreate: false,
       modalFamily: false,
       modalFamilyCreate: false,
+      hasCases: false,
+      hasFamilies: false,
+      hasContacts: false,
     };
   },
   methods: {
     edit() {
       this.$router.push(`/clients/${this.clientId}/edit`);
+    },
+    async remove() {
+      try {
+        await ClientsService.remove(this.clientId);
+        this.$router.push("/clients");
+      } catch (err) {
+        console.log(err);
+      }
     },
     closePanel() {
       this.slideOverSwitch = false;
@@ -1020,12 +1050,15 @@ export default {
   async mounted() {
     this.clientId = this.$store.state.route.params.clientId;
     this.client = (await ClientsService.get(this.clientId)).data;
+    this.hasCases = this.client.Cases.length > 0;
+    this.hasFamilies = this.client.Family.length > 0;
+    this.hasContacts = this.client.Contacts.length > 0;
   },
   computed: {
-    age: function() {
+    age: function () {
       return 2021 - parseInt(this.client.birthday);
     },
-    clientIdModified: function() {
+    clientIdModified: function () {
       return parseInt(this.clientId);
     },
   },

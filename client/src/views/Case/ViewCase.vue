@@ -353,6 +353,12 @@
                   class="px-4 py-3 bg-gradient-to-r from-blue-100 to-red-100 text-right sm:px-6 "
                 >
                   <button
+                    @click="remove"
+                    class="mx-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  >
+                    刪除
+                  </button>
+                  <button
                     @click="print"
                     class="mx-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-lg font-semibold rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
                   >
@@ -429,6 +435,14 @@ export default {
     print() {
       this.childPrint++;
     },
+    async remove(){
+      try{
+        await CaseService.remove(this.caseId)
+        this.$router.push("/case");
+      }catch(err){
+        console.log(err);
+      }
+    }
   },
   computed: {
     clientName: function() {
