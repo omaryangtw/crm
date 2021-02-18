@@ -42,11 +42,11 @@
             To: "opacity-0"
         -->
           <div
-            class="absolute top-0 left-0 -ml-8  border-r-2 border-dotted border-gray-500 flex sm:-ml-10 "
+            class="absolute top-0 left-0 -ml-8 border-r-2 border-dotted border-gray-500 flex sm:-ml-10"
           >
             <button
               @click="closePanel"
-              class=" bg-gray-100 text-gray-300 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
+              class="bg-gray-100 text-gray-300 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
             >
               <span class="sr-only">Close panel</span>
               <!-- Heroicon name: x -->
@@ -115,8 +115,8 @@ export default {
     },
   },
   watch: {
-    slideOverSwitch: async function() {
-      this.cases = ((await CaseService.byClient(this.clientId)).data).Cases;
+    slideOverSwitch: async function () {
+      this.cases = (await CaseService.byClient(this.clientId)).data;
     },
   },
 };

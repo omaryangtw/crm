@@ -10,7 +10,7 @@ module.exports = {
         console.log("search string = ", search);
         cases = await Case.findAll({
           where: {
-            [or]: ["name",'note','handle'].map((key) => ({
+            [or]: ["name", "note", "handle"].map((key) => ({
               [key]: {
                 [like]: `%${search}%`,
               },
@@ -77,9 +77,7 @@ module.exports = {
     try {
       const client = await Client.findOne({
         where: { id: req.params.clientId },
-        include: [
-          { model: Case }, 
-        ],
+        include: [{ model: Case }],
       });
       res.send(client);
     } catch (err) {

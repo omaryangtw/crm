@@ -5,7 +5,7 @@
         <div class="md:col-span-1">
           <label
             for="month"
-            class="mt-10 block text-lg sm:text-xl font-semibold text-gray-700"
+            class="block text-lg sm:text-xl font-semibold text-gray-700"
             >月份</label
           >
           <input
