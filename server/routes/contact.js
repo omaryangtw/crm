@@ -8,7 +8,8 @@ router.post("/", (req, res) => {
 router.delete("/:clientId/:contactId", (req, res) => {
   ContactController.delete(req, res);
 });
-router.get("/all", ContactController.get);
 router.get("/", ContactController.index);
-
+router.get("/all", ContactController.get);
+router.get("/recent", ContactController.recent);
+router.get("/since-this-week", ContactController.sinceThisWeek);
 module.exports = router;

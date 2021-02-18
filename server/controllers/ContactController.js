@@ -66,18 +66,68 @@ module.exports = {
   },
   async get(req, res) {
     try {
+      var d = new Date();
+      var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6 : 1);
+      var startday = d.setDate(diff);
+      startday = new Date(startday);
       const records = await Contact.findAll({
-        /*   where: {
+        where: {
           date: {
-            [gte]: new Date() - 7 * 86400 * 1000,
+            [gte]: startday,
           },
         },
         attributes: [
-          ["personInCharge", "夥伴"],
-          [sequelize.fn("count", sequelize.col("personInCharge")), "數量"],
+          ["personInCharge", "employee"],
+          [sequelize.fn("count", sequelize.col("personInCharge")), "count"],
         ],
         order: [["date", "DESC"]],
-        group: ["personInCharge"], */
+        group: ["personInCharge"],
+      });
+      res.send(records);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to get records",
+      });
+    }
+  },
+  async recent(req, res) {
+    try {
+      const records = await Client.findAll({
+        where: {
+          canCall: true,
+        },
+        include: [
+          {
+            model: Contact,
+          },
+        ],
+        attributes: [
+          ["id", "id"],
+          ["name", "name"],
+        ],
+      });
+      res.send(records);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to get records",
+      });
+    }
+  },
+  async sinceThisWeek(req, res) {
+    try {
+      var d = new Date();
+      var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6 : 1);
+      var startday = d.setDate(diff);
+      startday = new Date(startday);
+      console.log(startday);
+      const records = await Contact.findAll({
+        where: {
+          date: {
+            [gte]: startday,
+          },
+        },
       });
       res.send(records);
     } catch (err) {
