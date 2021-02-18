@@ -6,8 +6,8 @@
           <div
             class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
           >
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-200">
+            <table class="min-w-full divide-y divide-gray-200 bg-opacity-25">
+              <thead class="bg-gray-200 bg-opacity-25">
                 <tr>
                   <th
                     scope="col"
@@ -38,7 +38,7 @@
                   </th>
                 </tr>
               </thead>
-              <tbody class="bg-gray-100 divide-y divide-gray-200">
+              <tbody class="divide-y divide-gray-200 bg-transparent">
                 <tr
                   v-for="member in client.Family"
                   :key="member.id"

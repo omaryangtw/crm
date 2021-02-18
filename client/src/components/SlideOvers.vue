@@ -116,7 +116,7 @@ export default {
   },
   watch: {
     slideOverSwitch: async function() {
-      this.cases = (await CaseService.byClient(this.clientId)).data;
+      this.cases = ((await CaseService.byClient(this.clientId)).data).Cases;
     },
   },
 };
