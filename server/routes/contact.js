@@ -12,4 +12,5 @@ router.get("/", ContactController.index);
 router.get("/all", ContactController.get);
 router.get("/recent", ContactController.recent);
 router.get("/since-this-week", ContactController.sinceThisWeek);
+router.get("/history", ContactController.history);
 module.exports = router;

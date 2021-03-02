@@ -105,7 +105,11 @@ export default {
           targetId: this.targetId,
           relationship: this.relationship,
         });
-        this.closeModal();
+
+        setTimeout(() => {
+          this.closeModal();
+          this.$router.go(0);
+        }, 200);
       } catch (err) {
         console.log(err);
       }
@@ -130,7 +134,7 @@ export default {
     }
   },
   watch: {
-    target: function() {
+    target: function () {
       this.targetInfo.sex =
         this.clients.find((client) => client.id === this.target.id).sex ===
         "male"

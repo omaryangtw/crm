@@ -103,11 +103,12 @@ export default {
     closeModal() {
       this.$emit("close-modal");
     },
-    async redirect(clientId) {
-      this.$router.push({
+    redirect(clientId) {
+      this.$router.replace({
         name: "client",
         params: { clientId: clientId },
       });
+      setTimeout(() => this.$router.go(0), 200);
     },
   },
 };

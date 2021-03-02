@@ -55,9 +55,9 @@
                             地址
                           </th>
 
-                          <th scope="col" class="relative px-6 py-3">
+                          <!--                           <th scope="col" class="relative px-6 py-3">
                             <span class="sr-only">Edit</span>
-                          </th>
+                          </th> -->
                         </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
@@ -69,31 +69,35 @@
                                   class="text-md font-medium text-gray-900"
                                   :class="{ 'text-red-600': client.isDead }"
                                 >
-                                  <router-link
-                                    :to="{
-                                      name: 'client',
-                                      params: { clientId: client.id },
-                                    }"
-                                    >{{ client.name }}</router-link
-                                  >
-                                </div>
-                                <div
-                                  class="text-md text-gray-500"
-                                  :class="{ 'text-red-600': client.isDead }"
-                                  v-if="client.nameAlt"
-                                >
-                                  {{ client.nameAlt }}
+                                  <div class="flex">
+                                    <router-link
+                                      :to="{
+                                        name: 'client',
+                                        params: { clientId: client.id },
+                                      }"
+                                      >{{ client.name }}</router-link
+                                    >
+                                    <span
+                                      v-if="client.birthday && !client.isDead"
+                                      class="text-yellow-500 font-bold"
+                                    >
+                                      ({{ age(client.birthday) }})
+                                    </span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td class="px-6 py-2 whitespace-nowrap">
-                            <div class="text-md text-gray-900">
+                            <span class="text-md text-gray-900">
                               {{ client.group }}
-                            </div>
-                            <div class="text-md text-gray-500">
-                              {{ client.plainMountain }}
-                            </div>
+                            </span>
+                            <span
+                              v-if="client.plainMountain"
+                              class="text-md text-gray-500"
+                            >
+                              ({{ client.plainMountain }})
+                            </span>
                           </td>
                           <td class="px-6 py-2 whitespace-nowrap">
                             <span class="text-md text-gray-500">
@@ -118,16 +122,16 @@
                           </td>
                           <td class="px-6 py-2 whitespace-nowrap">
                             <div class="text-md text-gray-900">
-                              {{ client.city }}{{ client.dist }}{{ client.vill
+                              {{ client.dist }}{{ client.vill
                               }}{{ client.addr }}
                             </div>
                             <div class="text-md text-gray-500">
-                              {{ client.cityAlt }}{{ client.distAlt
-                              }}{{ client.villAlt }}{{ client.addrAlt }}
+                              {{ client.distAlt }}{{ client.villAlt
+                              }}{{ client.addrAlt }}
                             </div>
                           </td>
 
-                          <td
+                          <!--                           <td
                             class="px-6 py-2 whitespace-nowrap text-right text-md font-medium"
                           >
                             <button
@@ -136,7 +140,7 @@
                             >
                               編輯
                             </button>
-                          </td>
+                          </td> -->
                         </tr>
 
                         <!-- More items... -->
@@ -181,6 +185,11 @@ export default {
   methods: {
     edit(clientId) {
       this.$router.push(`/clients/${clientId}/edit`);
+    },
+    age(birthday) {
+      if (birthday) {
+        return 2021 - parseInt(birthday);
+      }
     },
   },
 };

@@ -70,6 +70,7 @@ module.exports = {
           "dist",
           "vill",
           "addr",
+          "isDead",
         ],
       });
       res.send(clients);
@@ -142,6 +143,7 @@ module.exports = {
           "dist",
           "vill",
           "addr",
+          "canMail",
         ],
         where: {
           [and]: [

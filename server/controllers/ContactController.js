@@ -1,5 +1,5 @@
 const { Contact, Client, sequelize } = require("../models");
-const { or, like, gte } = require("sequelize").Op;
+const { or, like, gte, and, ne } = require("sequelize").Op;
 module.exports = {
   async index(req, res) {
     try {
@@ -71,10 +71,16 @@ module.exports = {
         diff = d.getDate() - day + (day == 0 ? -6 : 1);
       var startday = d.setDate(diff);
       startday = new Date(startday);
+      startday.setHours(0, 0, 0, 0);
       const records = await Contact.findAll({
         where: {
-          date: {
-            [gte]: startday,
+          [and]: {
+            date: {
+              [gte]: startday,
+            },
+            contactType: {
+              [ne]: "簡訊",
+            },
           },
         },
         attributes: [
@@ -121,7 +127,30 @@ module.exports = {
         diff = d.getDate() - day + (day == 0 ? -6 : 1);
       var startday = d.setDate(diff);
       startday = new Date(startday);
+      console.log(startday.setHours(0, 0, 0, 0));
       console.log(startday);
+      const records = await Contact.findAll({
+        where: {
+          date: {
+            [gte]: startday,
+          },
+        },
+        include: [
+          {
+            model: Client,
+          },
+        ],
+      });
+      res.send(records);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to get records",
+      });
+    }
+  },
+  async history(req, res) {
+    try {
+      var startday = new Date(2021, 1, 22, 0, 0, 0, 0);
       const records = await Contact.findAll({
         where: {
           date: {

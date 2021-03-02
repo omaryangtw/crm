@@ -14,6 +14,9 @@ export default {
   sinceThisWeek() {
     return api().get("/contact/since-this-week");
   },
+  historyContact() {
+    return api().get("/contact/history");
+  },
   index() {
     return api().get("/contact/all");
   },

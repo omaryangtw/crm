@@ -409,6 +409,17 @@
               <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-gray-200 sm:p-6">
                   <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12">
+                      <img
+                        :src="'http://192.168.1.219:3000/' + client.id + '.jpg'"
+                        alt=""
+                        class="px-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150 z-50"
+                        style="max-height: 400px"
+                        :class="{ hovering: isHover }"
+                        @mouseover="isHover = true"
+                        @mouseout="isHover = false"
+                      />
+                    </div>
                     <div class="col-span-12" v-if="client.isDead">
                       <label
                         for="isDead"
@@ -1011,6 +1022,7 @@ export default {
   },
   data() {
     return {
+      isHover: false,
       clientId: null,
       client: {
         id: "",
@@ -1065,4 +1077,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.hovering {
+  position: absolute;
+  transform: scale(2);
+}
+</style>

@@ -17,12 +17,15 @@ export default {
   },
   async mounted() {
     this.contacts = (await ContactService.index()).data;
+    this.contacts = this.contacts.filter(
+      (contact) => contact.contactType != "簡訊"
+    );
     this.generateArc();
   },
   methods: {
     generateArc() {
       const w = 500;
-      const h = 300;
+      const h = 500;
 
       const svg = d3
         .select("#arc")
@@ -75,7 +78,7 @@ export default {
         .attr("dy", -8)
         .attr("y", (d, i) => -(i + 1) * 25);
 
-      g.attr("transform", "translate(300,150)");
+      g.attr("transform", "translate(300,200)");
     },
   },
 };

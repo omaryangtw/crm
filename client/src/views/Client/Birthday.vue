@@ -6,8 +6,8 @@
           <label
             for="month"
             class="block text-lg sm:text-xl font-semibold text-gray-700"
-            >月份</label
-          >
+            >月份 (總數: {{ len }} )
+          </label>
           <input
             type="number"
             name="month"
@@ -17,6 +17,24 @@
             v-model="month"
             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-xl border-gray-300 rounded-md"
           />
+          <div>
+            <input
+              class="text-indigo-500"
+              v-model="printMode"
+              type="checkbox"
+              name="printMode"
+              id=""
+            />生日卡模式
+          </div>
+          <div>
+            <input
+              class="text-indigo-500"
+              v-model="visit"
+              type="checkbox"
+              name="visit"
+              id=""
+            />外訪(特助)模式
+          </div>
         </div>
         <div class="md:col-span-5">
           <panel title="族人列表">
@@ -39,6 +57,7 @@
                             姓名
                           </th>
                           <th
+                            v-if="!printMode"
                             scope="col"
                             class="px-6 py-1 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
@@ -51,12 +70,14 @@
                             生日
                           </th>
                           <th
+                            v-if="!printMode"
                             scope="col"
                             class="px-6 py-1 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
                             手機
                           </th>
                           <th
+                            v-if="!printMode"
                             scope="col"
                             class="px-6 py-1 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
@@ -71,21 +92,20 @@
                         </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
-                        <tr v-for="client in clients" :key="client.id">
+                        <tr v-for="(client, index) in clients" :key="client.id">
                           <td class="px-6 py-1 whitespace-nowrap">
                             <div class="flex items-center">
                               <div class="ml-4">
                                 <div
-                                  class="text-md font-medium text-gray-900"
-                                  :class="{ 'text-red-600': client.isDead }"
+                                  class="text-md font-medium text-gray-900 flex"
                                 >
-                                  <router-link
-                                    :to="{
-                                      name: 'client',
-                                      params: { clientId: client.id },
-                                    }"
-                                    >{{ client.name }}</router-link
-                                  >
+                                  <div v-if="!printMode && !visit">
+                                    {{ index + 1 }}
+                                  </div>
+                                  <div>{{ client.name }}</div>
+                                  <div v-if="!printMode && !visit">
+                                    ( {{ age(client.birthday) }} )
+                                  </div>
                                 </div>
                                 <div
                                   class="text-md text-gray-500"
@@ -97,20 +117,30 @@
                               </div>
                             </div>
                           </td>
-                          <td class="px-6py-1 whitespace-nowrap">
-                            <div class="text-md text-gray-900">
+                          <td
+                            class="px-6py-1 whitespace-nowrap"
+                            v-if="!printMode"
+                            :class="{ flex: visit }"
+                          >
+                            <span class="text-md text-gray-900">
                               {{ client.group }}
-                            </div>
-                            <div class="text-md text-gray-500">
-                              {{ client.plainMountain }}
-                            </div>
+                            </span>
+                            <span
+                              v-if="client.plainMountain"
+                              class="text-md text-gray-500"
+                            >
+                              ({{ client.plainMountain }})
+                            </span>
                           </td>
                           <td class="px-6 py-1 whitespace-nowrap">
                             <span class="text-md text-gray-500">
                               {{ client.birthday }}
                             </span>
                           </td>
-                          <td class="px-6py1 whitespace-nowrap">
+                          <td
+                            class="px-6py1 whitespace-nowrap"
+                            v-if="!printMode"
+                          >
                             <div class="text-md text-gray-900">
                               {{ client.mobile }}
                             </div>
@@ -118,7 +148,10 @@
                               {{ client.mobileAlt }}
                             </div>
                           </td>
-                          <td class="px-6 py-1 whitespace-nowrap">
+                          <td
+                            class="px-6 py-1 whitespace-nowrap"
+                            v-if="!printMode"
+                          >
                             <div class="text-md text-gray-900">
                               {{ client.phone }}
                             </div>
@@ -128,12 +161,12 @@
                           </td>
                           <td class="px-6py-1 whitespace-nowrap">
                             <div class="text-md text-gray-900">
-                              {{ client.city }}{{ client.dist }}{{ client.vill
+                              {{ client.dist }}{{ client.vill
                               }}{{ client.addr }}
                             </div>
                             <div class="text-md text-gray-500">
-                              {{ client.cityAlt }}{{ client.distAlt
-                              }}{{ client.villAlt }}{{ client.addrAlt }}
+                              {{ client.distAlt }}{{ client.villAlt
+                              }}{{ client.addrAlt }}
                             </div>
                           </td>
                         </tr>
@@ -164,7 +197,23 @@ export default {
       allClients: null,
       clients: null,
       month: "1",
+      len: null,
+      printMode: false,
+      visit: false,
     };
+  },
+  methods: {
+    age(birthday) {
+      return 2021 - parseInt(birthday);
+    },
+    ageCheck(client) {
+      if (this.visit && client.age >= 55) {
+        return client;
+      }
+      if (!this.visit) {
+        return client;
+      }
+    },
   },
   watch: {
     month: {
@@ -175,9 +224,16 @@ export default {
           .filter(
             (client) => parseInt(client.birthMonth) === parseInt(this.month)
           )
+          .filter((client) => !client.isDead)
+          .filter((client) => client.addr)
+          //.filter((client) => client.age >= 55)
           .sort((a, b) => a.birthday.slice(8, 10) - b.birthday.slice(8, 10));
+        this.len = this.clients.length;
       },
     },
+  },
+  visit: function () {
+    this.clients.filter(this.ageCheck);
   },
 };
 </script>
