@@ -17,9 +17,6 @@ export default {
   },
   async mounted() {
     this.contacts = (await ContactService.index()).data;
-    this.contacts = this.contacts.filter(
-      (contact) => contact.contactType != "簡訊"
-    );
     this.generateArc();
   },
   methods: {

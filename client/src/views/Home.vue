@@ -202,6 +202,76 @@
             </div>
           </div>
         </div>
+        <div class="md:col-span-6">
+          <panel title="最近動態" style="min-height: 50%">
+            <div class="flex flex-col">
+              <div class="-my-2 overflow-auto sm:-mx-6 lg:-mx-8">
+                <div
+                  class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                >
+                  <div
+                    class="shadow overflow-auto border-b border-gray-200 sm:rounded-lg h-96"
+                  >
+                    <table class="min-w-full divide-y divide-gray-200">
+                      <thead class="bg-gray-50">
+                        <tr>
+                          <th
+                            scope="col"
+                            class="px-2 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            客戶名稱
+                          </th>
+                          <th
+                            scope="col"
+                            class="px-2 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            by
+                          </th>
+                          <th
+                            scope="col"
+                            class="px-2 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            訊息
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="bg-white divide-y divide-gray-200">
+                        <tr v-for="contact in weeklyContact" :key="contact.id">
+                          <td class="px-6 py-1 whitespace-nowrap">
+                            <div class="flex items-center">
+                              <div class="ml-4">
+                                <div class="text-md font-medium text-gray-900">
+                                  <div>
+                                    <router-link
+                                      :to="{
+                                        name: 'client',
+                                        params: { clientId: contact.Client.id },
+                                      }"
+                                      >{{ contact.Client.name }}</router-link
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-6 py-1 whitespace-nowrap">
+                            {{ contact.personInCharge }} /
+                            {{ contact.contactType }}
+                          </td>
+                          <td class="px-6 py-1 whitespace-normal">
+                            {{ contact.record }}
+                          </td>
+                        </tr>
+
+                        <!-- More items... -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </panel>
+        </div>
         <div class="md:col-span-2">
           <panel title="距上次聯繫逾一個月">
             <div class="flex flex-col">
@@ -320,70 +390,6 @@
             </div>
           </panel>
         </div>
-        <div class="md:col-span-2">
-          <panel title="最近動態">
-            <div class="flex flex-col">
-              <div class="-my-2 overflow-auto sm:-mx-6 lg:-mx-8">
-                <div
-                  class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
-                >
-                  <div
-                    class="shadow overflow-auto border-b border-gray-200 sm:rounded-lg h-96"
-                  >
-                    <table class="min-w-full divide-y divide-gray-200">
-                      <thead class="bg-gray-50">
-                        <tr>
-                          <th
-                            scope="col"
-                            class="px-2 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            客戶名稱
-                          </th>
-                          <th
-                            scope="col"
-                            class="px-2 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            by
-                          </th>
-                          <th
-                            scope="col"
-                            class="px-2 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
-                          >
-                            訊息
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr v-for="contact in weeklyContact" :key="contact.id">
-                          <td class="px-6 py-1 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-md font-medium text-gray-900">
-                                  <div>
-                                    {{ contact.Client.name }}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-1 whitespace-nowrap">
-                            {{ contact.personInCharge }} /
-                            {{ contact.contactType }}
-                          </td>
-                          <td class="px-6 py-1 whitespace-nowrap">
-                            {{ contact.record }}
-                          </td>
-                        </tr>
-
-                        <!-- More items... -->
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </panel>
-        </div>
       </div>
     </div>
   </div>
@@ -410,9 +416,9 @@ export default {
       weeklyNakaw: null,
       weeklyKilang: null,
       weeklyAhoho: null,
-      historyyNakaw: null,
-      historyyKilang: null,
-      historyyAhoho: null,
+      historyNakaw: null,
+      historyKilang: null,
+      historyAhoho: null,
       week: null,
     };
   },
@@ -454,6 +460,7 @@ export default {
 
     this.weeklyNakaw = this.weeklyContact
       .filter((contact) => contact.personInCharge == "Nakaw")
+      .filter((contact) => contact.isSuccess === true)
       .filter((contact) => contact.contactType != "簡訊").length;
     this.weeklyKilang = this.weeklyContact.filter(
       (contact) => contact.personInCharge == "Kilang"

@@ -81,6 +81,9 @@ module.exports = {
             contactType: {
               [ne]: "簡訊",
             },
+            isSuccess: {
+              [ne]: false,
+            },
           },
         },
         attributes: [
