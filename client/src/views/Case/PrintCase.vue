@@ -95,8 +95,7 @@ export default {
     },
     client: function () {
       if (this.client.plainMountain) {
-        this.clientPlain =
-          this.client.plainMountain === "plain" ? "平原" : "山原";
+        this.clientPlain = this.client.plainMountain;
       }
       this.caseId = this.case_.id;
       this.caseName = this.case_.name.split("/")[0];
