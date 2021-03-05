@@ -1,5 +1,5 @@
 const { Case, Client } = require("../models");
-const { or, like } = require("sequelize").Op;
+const { or, like, gte } = require("sequelize").Op;
 module.exports = {
   async index(req, res) {
     try {
@@ -93,6 +93,25 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: "an error occured trying to fetch clients",
+      });
+    }
+  },
+  async dailyCount(req, res) {
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    console.log(today);
+    try {
+      const count = await Case.findAll({
+        where: {
+          createdAt: {
+            [gte]: today,
+          },
+        },
+      });
+      res.send(count);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured to fetch counts",
       });
     }
   },

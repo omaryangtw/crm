@@ -35,6 +35,7 @@ cron.schedule("40 23 * * *", function () {
       fs.writeFile(path, JSON.stringify(result.data), (err) => {
         if (err) throw err;
       });
+      console.log("case backed up");
     })
     .catch((err) => {
       console.log(err);
@@ -53,6 +54,7 @@ cron.schedule("45 23 * * *", function () {
       fs.writeFile(path, JSON.stringify(result.data), (err) => {
         if (err) throw err;
       });
+      console.log("contact backed up");
     })
     .catch((err) => {
       console.log(err);
@@ -71,6 +73,7 @@ cron.schedule("50 23 * * *", function () {
       fs.writeFile(path, JSON.stringify(result.data), (err) => {
         if (err) throw err;
       });
+      console.log("clients backed up");
     })
     .catch((err) => {
       console.log(err);
@@ -89,6 +92,7 @@ cron.schedule("55 23 * * *", function () {
       fs.writeFile(path, JSON.stringify(result.data), (err) => {
         if (err) throw err;
       });
+      console.log("family backed up");
     })
     .catch((err) => {
       console.log(err);
