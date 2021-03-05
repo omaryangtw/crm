@@ -1,4 +1,6 @@
 server/node_modules
+server/backup
+server/mailer/secret.js
 *.sqlite
 *.jpg
 server/seed/*.json

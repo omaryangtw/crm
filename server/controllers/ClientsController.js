@@ -178,6 +178,91 @@ module.exports = {
       });
     }
   },
+  async birthdayOfNextWeek(req, res) {
+    try {
+      let clients = null;
+      clients = await Client.findAll({
+        attributes: [
+          "id",
+          "name",
+          "birthday",
+          "birthMonth",
+          "birthDay",
+          "birthDayOfYear",
+          "isDead",
+          "age",
+          "phone",
+          "mobile",
+          "dist",
+          "vill",
+          "addr",
+          "canMail",
+        ],
+        where: {
+          [and]: [
+            {
+              birthday: {
+                [not]: null,
+              },
+              addr: {
+                [not]: null,
+              },
+              isDead: {
+                [not]: true,
+              },
+              [or]: [
+                {
+                  phone: {
+                    [not]: null,
+                  },
+                },
+                {
+                  mobile: {
+                    [not]: null,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      });
+
+      var d = new Date();
+      var day = d.getDay();
+      var diff1 = d.getDate() - day + (day == 0 ? -6 : 1) + 7;
+      var startday = d.setDate(diff1);
+      startday = new Date(startday);
+      startday.setHours(0, 0, 0, 0);
+
+      d = new Date();
+      day = d.getDay();
+      diff2 = d.getDate() - day + (day == 0 ? -6 : 1) + 14;
+      var endday = d.setDate(diff2);
+      endday = new Date(endday);
+      endday.setHours(0, 0, 0, 0);
+
+      var now = new Date();
+      var start = new Date(now.getFullYear(), 0, 0);
+      var oneDay = 1000 * 60 * 60 * 24;
+      d1 = startday - start;
+      d2 = endday - start;
+      var day1 = Math.floor(d1 / oneDay);
+      var day2 = Math.floor(d2 / oneDay);
+
+      clients = clients
+        .filter(
+          (client) =>
+            client.birthDayOfYear >= day1 && client.birthDayOfYear < day2
+        )
+        .sort((a, b) => a.birthDayOfYear - b.birthDayOfYear);
+
+      res.send(clients);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch clients",
+      });
+    }
+  },
   async household(req, res) {
     try {
       let clients = null;

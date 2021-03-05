@@ -10,5 +10,6 @@ router.delete("/:sourceId/:targetId", (req, res) => {
   FamilyController.delete(req, res);
 });
 router.get("/", FamilyController.get);
+router.get("/backup", FamilyController.get);
 
 module.exports = router;

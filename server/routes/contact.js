@@ -9,6 +9,7 @@ router.delete("/:clientId/:contactId", (req, res) => {
   ContactController.delete(req, res);
 });
 router.get("/", ContactController.index);
+router.get("/backup", ContactController.backup);
 router.get("/all", ContactController.get);
 router.get("/recent", ContactController.recent);
 router.get("/since-this-week", ContactController.sinceThisWeek);

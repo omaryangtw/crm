@@ -7,6 +7,7 @@ router.get("/all", ClientsController.indexAll);
 router.get("/backup", ClientsController.backup);
 router.get("/household", ClientsController.household);
 router.get("/birthdaylist", ClientsController.birthdaylist);
+router.get("/birthday-of-next-week", ClientsController.birthdayOfNextWeek);
 router.post("/", (req, res) => {
   ClientsController.post(req, res);
 });

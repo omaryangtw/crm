@@ -73,6 +73,16 @@ module.exports = {
       });
     }
   },
+  async backup(req, res) {
+    try {
+      const cases = await Case.findAll();
+      res.send(cases);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to fetch cases",
+      });
+    }
+  },
   async getByClient(req, res) {
     try {
       const client = await Client.findOne({

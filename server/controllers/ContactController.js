@@ -100,6 +100,16 @@ module.exports = {
       });
     }
   },
+  async backup(req, res) {
+    try {
+      const records = await Contact.findAll();
+      res.send(records);
+    } catch (err) {
+      res.status(500).send({
+        error: "an error occured trying to get records",
+      });
+    }
+  },
   async recent(req, res) {
     try {
       const records = await Client.findAll({

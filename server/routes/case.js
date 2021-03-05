@@ -3,7 +3,8 @@ var router = express.Router();
 const CaseController = require("../controllers/CaseController");
 
 router.get("/", CaseController.index);
-router.get('/by-client/:clientId', CaseController.getByClient)
+router.get("/backup", CaseController.backup);
+router.get("/by-client/:clientId", CaseController.getByClient);
 router.post("/", (req, res) => {
   CaseController.post(req, res);
 });

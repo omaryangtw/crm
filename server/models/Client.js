@@ -33,6 +33,32 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
     },
+    birthDay: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING, ["birthday"]),
+      get: function () {
+        if (this.birthday) {
+          return this.birthday.slice(8, 10);
+        }
+      },
+    },
+    birthDayOfYear: {
+      type: new DataTypes.VIRTUAL(DataTypes.STRING, ["birthday"]),
+      get: function () {
+        if (this.birthday) {
+          var now = new Date();
+          var birthday = new Date(
+            now.getFullYear(),
+            parseInt(this.birthday.slice(5, 7)) - 1,
+            parseInt(this.birthday.slice(8, 10))
+          );
+          var start = new Date(now.getFullYear(), 0, 0);
+          diff = birthday - start;
+          var oneDay = 1000 * 60 * 60 * 24;
+          var day = Math.floor(diff / oneDay);
+          return day;
+        }
+      },
+    },
 
     incomeStatus: DataTypes.ENUM("low", "mid-low", "mid-low-elderly"),
     disabledStatus: DataTypes.ENUM("light", "mid", "heavy"),
