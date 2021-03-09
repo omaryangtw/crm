@@ -22,8 +22,8 @@ sequelize.sync({ force: true }).then(async function () {
   );
   await Promise.all(
     families.map((family) => {
-      Client.findOne({ where: { id: family.ClientId } }).then((u1) => {
-        Client.findOne({ where: { id: family.FamilyId } }).then((u2) => {
+      Client.findOne({ where: { id: family.ClientId } }).then((u2) => {
+        Client.findOne({ where: { id: family.FamilyId } }).then((u1) => {
           u2.addFamily(u1, {
             through: { relationship: family.relationship },
           });
