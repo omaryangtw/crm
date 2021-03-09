@@ -118,7 +118,7 @@
               </div>
               <div class="text-right">
                 <span class="text-xs font-semibold inline-block text-pink-600">
-                  {{ historyNakaw / week }} %
+                  {{ percentage(historyNakaw / week) }} %
                 </span>
               </div>
             </div>
@@ -152,7 +152,7 @@
               </div>
               <div class="text-right">
                 <span class="text-xs font-semibold inline-block text-green-600">
-                  {{ historyKilang / week }} %
+                  {{ percentage(historyKilang / week) }} %
                 </span>
               </div>
             </div>
@@ -188,7 +188,7 @@
                 <span
                   class="text-xs font-semibold inline-block text-yellow-600"
                 >
-                  {{ historyAhoho / week }} %
+                  {{ percentage(historyAhoho / week) }} %
                 </span>
               </div>
             </div>
@@ -425,6 +425,9 @@ export default {
   methods: {
     lastContactDate(date) {
       return date.slice(0, 10);
+    },
+    percentage(num) {
+      return num.toFixed(2);
     },
   },
   async mounted() {
