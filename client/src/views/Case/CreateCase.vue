@@ -322,7 +322,6 @@
                         >案件狀況</label
                       >
                       <textarea
-                        type="text"
                         name="first_name"
                         id="first_name"
                         v-model="case__.note"
@@ -336,7 +335,6 @@
                         >處理紀錄</label
                       >
                       <textarea
-                        type="text"
                         name="first_name"
                         id="first_name"
                         v-model="case__.handle"
@@ -378,6 +376,7 @@ export default {
   data() {
     return {
       case__: {
+        id: null,
         name: "",
         status: "處理中",
         personInCharge: null,
@@ -389,8 +388,8 @@ export default {
         contact1: null,
         contact2: null,
         contact3: null,
-        note: null,
-        handle: null,
+        note: "",
+        handle: "",
       },
       clients: [],
       clientName: "",
@@ -422,6 +421,7 @@ export default {
           { id: "5", title: "繼承" },
           { id: "6", title: "諮詢" },
           { id: "7", title: "非訟" },
+          { id: "8", title: "刑事" },
         ],
         急難救助: [
           { id: "1", title: "生活扶助" },
@@ -479,6 +479,14 @@ export default {
   async mounted() {
     try {
       this.clients = (await ClientService.indexAll()).data;
+      var count = (await CaseService.dailyCount()).data.length + 1;
+      var dateString = new Date().toISOString();
+      this.case__.id =
+        dateString.slice(0, 4) +
+        dateString.slice(5, 7) +
+        dateString.slice(8, 10) +
+        "0" +
+        count.toString();
     } catch (err) {
       console.log(err);
     }

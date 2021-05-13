@@ -99,7 +99,7 @@ cron.schedule("55 23 * * *", function () {
     });
 });
 
-cron.schedule("0 0 * * 0", function () {
+/* cron.schedule("0 0 * * 0", function () {
   axios({
     method: "get",
     baseURL: "http://192.168.1.219:3000/",
@@ -164,6 +164,6 @@ cron.schedule("0 0 * * 0", function () {
     .catch((err) => {
       console.error(err);
     });
-});
+}); */
 
 app.listen(3031);

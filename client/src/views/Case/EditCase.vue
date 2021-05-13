@@ -7,10 +7,10 @@
             <div class="mt-5 md:mt-0 md:col-span-1">
               <div class="shadow overflow-hidden sm:rounded-md">
                 <div
-                  class="px-4 py-5 bg-gradient-to-l from-blue-100 to-red-100  sm:p-6"
+                  class="px-4 py-5 bg-gradient-to-l from-blue-100 to-red-100 sm:p-6"
                 >
                   <div class="grid grid-cols-2 gap-6">
-                    <div class=" sm:col-span-1">
+                    <div class="sm:col-span-1">
                       <label
                         class="ml-4 block text-lg font-semibold text-gray-700"
                         >族人</label
@@ -27,7 +27,7 @@
                     <div class="col-span-1 sm:col-span-1">
                       <label
                         for="date"
-                        class="block text-lg font-semibold  text-gray-700"
+                        class="block text-lg font-semibold text-gray-700"
                         >日期</label
                       >
                       <input
@@ -40,7 +40,7 @@
                       />
                     </div>
 
-                    <div class=" sm:col-span-1">
+                    <div class="sm:col-span-1">
                       <label
                         for="typesMajor"
                         class="block text-lg font-semibold text-gray-700"
@@ -53,13 +53,13 @@
                         v-model="case__.typesMajor"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg font-semibold"
                       >
-                        <option v-for="(item, index) in list" :key="item.id">{{
-                          index
-                        }}</option>
+                        <option v-for="(item, index) in list" :key="item.id">
+                          {{ index }}
+                        </option>
                       </select>
                     </div>
 
-                    <div class=" sm:col-span-1">
+                    <div class="sm:col-span-1">
                       <label
                         for="typesMinor"
                         class="block text-lg font-semibold text-gray-700"
@@ -74,8 +74,9 @@
                         <option
                           v-for="option in list[case__.typesMajor]"
                           :key="option.id"
-                          >{{ option.title }}</option
                         >
+                          {{ option.title }}
+                        </option>
                       </select>
                     </div>
                     <div class="col-span-1">
@@ -94,7 +95,7 @@
                         <option>結案</option>
                       </select>
                     </div>
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="personInCharge"
                         class="block text-lg font-semibold text-gray-700"
@@ -153,7 +154,7 @@
                         class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" sm:col-span-2 col-span-3">
+                    <div class="sm:col-span-2 col-span-3">
                       <label class="block text- font-semibold text-gray-700"
                         >身分證號</label
                       >
@@ -166,7 +167,7 @@
                       />
                     </div>
 
-                    <div class=" sm:col-span-2 col-span-3">
+                    <div class="sm:col-span-2 col-span-3">
                       <label class="block text-lg font-semibold text-gray-700"
                         >手機</label
                       >
@@ -178,7 +179,7 @@
                         class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-3 sm:col-span-2">
+                    <div class="col-span-3 sm:col-span-2">
                       <label class="block text-lg font-semibold text-gray-700"
                         >電話</label
                       >
@@ -190,7 +191,7 @@
                         class="mt-1 bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-6">
+                    <div class="col-span-6">
                       <label class="block text-lg font-semibold text-gray-700"
                         >地址</label
                       >
@@ -209,10 +210,10 @@
             <div class="mt-5 md:mt-0 md:col-span-1">
               <div class="shadow overflow-hidden sm:rounded-md">
                 <div
-                  class="px-4 py-5 bg-gradient-to-l from-blue-100 to-indigo-100  sm:p-6"
+                  class="px-4 py-5 bg-gradient-to-l from-blue-100 to-indigo-100 sm:p-6"
                 >
                   <div class="grid grid-cols-2 gap-6">
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="relation1"
                         class="block text-lg font-semibold text-gray-700"
@@ -226,7 +227,7 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="contact1"
                         class="block text-lg font-semibold text-gray-700"
@@ -240,7 +241,7 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="relation2"
                         class="block text-lg font-semibold text-gray-700"
@@ -254,7 +255,7 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="contact2"
                         class="block text-lg font-semibold text-gray-700"
@@ -268,7 +269,7 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="relation3"
                         class="block text-lg font-semibold text-gray-700"
@@ -282,7 +283,7 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg font-semibold border-gray-300 rounded-md"
                       />
                     </div>
-                    <div class=" col-span-1">
+                    <div class="col-span-1">
                       <label
                         for="contact3"
                         class="block text-lg font-semibold text-gray-700"
@@ -312,7 +313,7 @@
             <div class="mt-5 md:mt-0 md:col-span-6">
               <div class="shadow overflow-hidden sm:rounded-md">
                 <div
-                  class="px-4 py-5 bg-gradient-to-l  from-blue-100 to-red-100 sm:p-6"
+                  class="px-4 py-5 bg-gradient-to-l from-blue-100 to-red-100 sm:p-6"
                 >
                   <div class="grid grid-cols-2 gap-2">
                     <div class="col-span-2 sm:col-span-1">
@@ -346,7 +347,7 @@
                   </div>
                 </div>
                 <div
-                  class="px-4 py-3 bg-gradient-to-l from-blue-100 to-red-100 text-right sm:px-6 "
+                  class="px-4 py-3 bg-gradient-to-l from-blue-100 to-red-100 text-right sm:px-6"
                 >
                   <button
                     @click="save"
@@ -418,6 +419,7 @@ export default {
           { id: "5", title: "繼承" },
           { id: "6", title: "諮詢" },
           { id: "7", title: "非訟" },
+          { id: "8", title: "刑事" },
         ],
         急難救助: [
           { id: "1", title: "生活扶助" },
@@ -444,7 +446,7 @@ export default {
     },
   },
   watch: {
-    client: function() {
+    client: function () {
       this.clientName = this.client.name;
       this.clientPlain = this.client.plainMountain;
       this.clientGroup = this.client.group;
@@ -463,7 +465,7 @@ export default {
     },
   },
   computed: {
-    caseDate: function() {
+    caseDate: function () {
       return this.case__.name.split("/")[1];
     },
   },
@@ -478,7 +480,7 @@ export default {
   },
 };
 const Strings = {};
-Strings.orEmpty = function(entity) {
+Strings.orEmpty = function (entity) {
   return entity || "";
 };
 </script>

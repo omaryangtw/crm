@@ -124,6 +124,8 @@ module.exports = {
         attributes: [
           ["id", "id"],
           ["name", "name"],
+          ["mobile", "mobile"],
+          ["phone", "phone"],
         ],
       });
       res.send(records);

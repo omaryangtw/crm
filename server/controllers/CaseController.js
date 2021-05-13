@@ -21,6 +21,7 @@ module.exports = {
               model: Client,
             },
           ],
+          order: [["updatedAt", "DESC"]],
         });
       } else {
         cases = await Case.findAll(/* { where: { status: "處理中" } } */);

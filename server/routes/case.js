@@ -5,6 +5,7 @@ const CaseController = require("../controllers/CaseController");
 router.get("/", CaseController.index);
 router.get("/backup", CaseController.backup);
 router.get("/by-client/:clientId", CaseController.getByClient);
+router.get("/daily-count", CaseController.dailyCount);
 router.post("/", (req, res) => {
   CaseController.post(req, res);
 });

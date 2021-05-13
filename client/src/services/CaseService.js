@@ -11,6 +11,9 @@ export default {
   byClient(ClientId) {
     return api().get(`case/by-client/${ClientId}`);
   },
+  dailyCount() {
+    return api().get(`case/daily-count`);
+  },
   create(case_) {
     return api().post("case", case_);
   },
@@ -20,7 +23,7 @@ export default {
   get(id) {
     return api().get(`case/${id}`);
   },
-  remove(id){
+  remove(id) {
     return api().delete(`case/${id}`);
-  }
+  },
 };

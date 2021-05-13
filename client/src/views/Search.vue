@@ -29,7 +29,7 @@ export default {
     };
   },
   watch: {
-    search: _.debounce(async function() {
+    search: _.debounce(async function () {
       const route = {};
       if (this.search !== "") {
         route.query = {

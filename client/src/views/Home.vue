@@ -272,7 +272,7 @@
             </div>
           </panel>
         </div>
-        <div class="md:col-span-2">
+        <div class="md:col-span-3">
           <panel title="距上次聯繫逾一個月">
             <div class="flex flex-col">
               <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -334,7 +334,7 @@
             </div>
           </panel>
         </div>
-        <div class="md:col-span-2">
+        <div class="md:col-span-3">
           <panel title="未曾聯絡">
             <div class="flex flex-col">
               <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -366,7 +366,9 @@
                           <td class="px-6 py-1 whitespace-nowrap">
                             <div class="flex items-center">
                               <div class="ml-4">
-                                <div class="text-md font-medium text-gray-900">
+                                <div
+                                  class="text-md font-medium text-gray-900 flex"
+                                >
                                   <router-link
                                     :to="{
                                       name: 'client',
@@ -374,6 +376,14 @@
                                     }"
                                     >{{ client.name }}</router-link
                                   >
+                                  <div
+                                    v-if="
+                                      client.mobile === null &&
+                                      client.phone === null
+                                    "
+                                  >
+                                    ----沒有電話----
+                                  </div>
                                 </div>
                               </div>
                             </div>

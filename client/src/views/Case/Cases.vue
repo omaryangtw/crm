@@ -16,37 +16,41 @@
                     class="shadow overflow-auto border-b border-gray-200 sm:rounded-lg"
                     style="height: 40rem"
                   >
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table
+                      class="table-fixed min-w-full divide-y divide-gray-200"
+                    >
                       <thead class="bg-gray-50">
                         <tr>
                           <th
                             scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                            class="w-1/3 px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
                             案件名稱
                           </th>
                           <th
                             scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                            class="w-1/6 px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
                             狀態
+                            <input
+                              type="checkbox"
+                              name="closed"
+                              id="closed"
+                              v-model="closed"
+                            />結案
                           </th>
                           <th
                             scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                            class="w-1/6 px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
                             類型
                           </th>
 
                           <th
                             scope="col"
-                            class="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                            class="w-1/3 px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
                           >
                             夥伴
-                          </th>
-
-                          <th scope="col" class="relative px-6 py-3">
-                            <span class="sr-only">Edit</span>
                           </th>
                         </tr>
                       </thead>
@@ -93,16 +97,6 @@
                               {{ case__.personInCharge }}
                             </span>
                           </td>
-
-                          <td
-                            class="px-6 py-1 whitespace-nowrap text-right text-md font-medium"
-                          >
-                            <button
-                              class="text-indigo-600 hover:text-indigo-900"
-                            >
-                              編輯
-                            </button>
-                          </td>
                         </tr>
 
                         <!-- More items... -->
@@ -130,16 +124,21 @@ export default {
     return {
       cases: null,
       search: "",
+      closed: true,
     };
   },
-  async mounted() {
-    this.cases = (await CaseService.index()).data;
+  computed: {
+    query() {
+      return this.$route.query.search + this.closed.toString(2);
+    },
   },
   watch: {
-    "$route.query.search": {
+    query: {
       immediate: true,
-      async handler(value) {
-        this.cases = (await CaseService.index(value)).data;
+      async handler() {
+        this.cases = (await CaseService.index(this.$route.query.search)).data
+          .filter((case_) => (this.closed ? case_ : case_.status === "處理中"))
+          .sort((a, b) => b.id - a.id);
       },
     },
   },
